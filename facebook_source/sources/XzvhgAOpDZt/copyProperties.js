@@ -1,4 +1,4 @@
-__d("copyProperties", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("copyProperties", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     function g(h, i, j, k, l, m, n) {
         h = h || {};
         var o = [i, j, k, l, m],
@@ -11,5 +11,5 @@ __d("copyProperties", []function(global, require, requireDynamic, requireLazy, m
         }
         return h;
     }
-    module.exports = g;
+    module /*e*/ .exports = g;
 });

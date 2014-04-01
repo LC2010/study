@@ -1,4 +1,4 @@
-__d("Parent", ["CSSCore"]function(global, require, requireDynamic, requireLazy, module, exports, CSSCore) {
+__d("Parent", ["CSSCore"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , CSSCore /*g*/ ) {
     var h = {
         byTag: function(i, j) {
             j = j.toUpperCase();
@@ -6,7 +6,7 @@ __d("Parent", ["CSSCore"]function(global, require, requireDynamic, requireLazy, 
             return i;
         },
         byClass: function(i, j) {
-            while (i && !CSSCore.hasClass(i, j)) i = i.parentNode;
+            while (i && !CSSCore /*g*/ .hasClass(i, j)) i = i.parentNode;
             return i;
         },
         byAttribute: function(i, j) {
@@ -14,5 +14,5 @@ __d("Parent", ["CSSCore"]function(global, require, requireDynamic, requireLazy, 
             return i;
         }
     };
-    module.exports = h;
+    module /*e*/ .exports = h;
 });

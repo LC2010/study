@@ -1,3 +1,3 @@
-__d("legacy:constructor-cache", ["JSCC"]function(global, require, requireDynamic, requireLazy) {
-    global.JSCC = require('JSCC');
+__d("legacy:constructor-cache", ["JSCC"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ ) {
+    global /*a*/ .JSCC = require /*b*/ ('JSCC');
 });

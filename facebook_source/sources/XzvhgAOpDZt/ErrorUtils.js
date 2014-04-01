@@ -1,8 +1,8 @@
-__d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global, require, requireDynamic, requireLazy, module, exports, Env, eprintf, erx, wrapFunction) {
+__d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Env /*g*/ , eprintf /*h*/ , erx /*i*/ , wrapFunction /*j*/ ) {
     var k = {}, l = '<anonymous guard>',
         m = '<generated guard>',
         n = '<window.onerror>',
-        o = /^https?:\/\//erx,
+        o = /^https?:\/\//erx /*i*/ ,
         p = /^Type Mismatch for/,
         q = ['Unknown script code', 'Function code', 'eval code'],
         r = new RegExp('(.*?)(\\s)(?:' + q.join('|') + ')$'),
@@ -15,10 +15,10 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global, requ
 
     function z(la) {
         if (!la) return [];
-        var ma = la.split(/\n\n/)[0].replace(/[\(\)]|\[.*?\]|^\w+:\s.*?\n/Env, '').split('\n').map(function(na) {
+        var ma = la.split(/\n\n/)[0].replace(/[\(\)]|\[.*?\]|^\w+:\s.*?\n/Env /*g*/ , '').split('\n').map(function(na) {
             var oa, pa, qa;
             na = na.trim();
-            if (/(:(\requireLazy+)(:(\requireLazy+))?)$/.test(na)) {
+            if (/(:(\requireLazy/ * d * /+)(:(\requireLazy/ * d * /+))?)$/.test(na)) {
                 pa = RegExp.$2;
                 qa = RegExp.$4;
                 na = na.slice(0, -RegExp.$1.length);
@@ -76,8 +76,8 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global, requ
             snapshot: la.snapshot
         };
         if (typeof qa.message === 'string' && !qa.messageWithParams) {
-            qa.messageWithParams = erx(qa.message);
-            qa.message = eprintf.apply(global, qa.messageWithParams);
+            qa.messageWithParams = erx /*i*/ (qa.message);
+            qa.message = eprintf /*h*/ .apply(global /*a*/ , qa.messageWithParams);
         } else {
             qa.messageObject = qa.message;
             qa.message = String(qa.message);
@@ -132,7 +132,7 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global, requ
     function fa(la, ma, na, oa, pa) {
         da(pa || l);
         var qa, ra = k.nocatch || (/nocatch/).test(location.search);
-        if (!ra && Env.nocatch) ra = Env.nocatch;
+        if (!ra && Env /*g*/ .nocatch) ra = Env /*g*/ .nocatch;
         if (ra) {
             try {
                 qa = la.apply(ma, na || []);
@@ -165,7 +165,7 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global, requ
         }
         return oa;
     }
-    wrapFunction.setWrapper(ga, 'entry');
+    wrapFunction /*j*/ .setWrapper(ga, 'entry');
 
     function ha(la, ma, na, oa, pa) {
         pa = pa || {};
@@ -201,6 +201,6 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"]function(global, requ
         onerror: ha,
         reportError: ba
     };
-    module.exports = global.ErrorUtils = ka;
+    module /*e*/ .exports = global /*a*/ .ErrorUtils = ka;
     if (typeof __t === 'function' && __t.setHandler) __t.setHandler(ba);
 });

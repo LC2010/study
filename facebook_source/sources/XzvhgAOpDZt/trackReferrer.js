@@ -1,6 +1,6 @@
-__d("trackReferrer", ["Parent"]function(global, require, requireDynamic, requireLazy, module, exports, Parent) {
+__d("trackReferrer", ["Parent"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Parent /*g*/ ) {
     function h(i, j) {
-        i = Parent.byAttribute(i, 'data-referrer');
+        i = Parent /*g*/ .byAttribute(i, 'data-referrer');
         if (i) {
             var k = /^(?:(?:[^:\/?#]+):)?(?:\/\/(?:[^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/.exec(j)[1] || '';
             if (!k) return;
@@ -11,5 +11,5 @@ __d("trackReferrer", ["Parent"]function(global, require, requireDynamic, require
         }
         return i;
     }
-    module.exports = h;
+    module /*e*/ .exports = h;
 });

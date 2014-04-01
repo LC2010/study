@@ -1,6 +1,6 @@
-__d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties", "ex", "ge", "replaceTransportMarkers"]function(global, require, requireDynamic, requireLazy, module, exports, ErrorUtils, EventEmitter, ServerJSDefine, copyProperties, ex, ge, replaceTransportMarkers) {
+__d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties", "ex", "ge", "replaceTransportMarkers"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , ErrorUtils /*g*/ , EventEmitter /*h*/ , ServerJSDefine /*i*/ , copyProperties /*j*/ , ex /*k*/ , ge /*l*/ , replaceTransportMarkers /*m*/ ) {
     var n = 0,
-        o = new EventEmitter(),
+        o = new EventEmitter /*h*/ (),
         p = 0;
 
     function q() {
@@ -11,7 +11,7 @@ __d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties
     q.PRE_JS_CALL = 'pre-js-call';
     q.POST_JS_CALL = 'post-js-call';
     q.addListener = o.addListener.bind(o);
-    copyProperties(q.prototype, {
+    copyProperties /*j*/ (q.prototype, {
         handle: function(u) {
             if (u.__guard) throw new Error('ServerJS.handle called on data that has already been handled');
             u.__guard = true;
@@ -40,7 +40,7 @@ __d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties
         cleanup: function() {
             var u = [];
             for (var v in this._moduleMap) u.push(v);
-            requireLazy.call(null, u, t);
+            requireLazy /*d*/ .call(null, u, t);
             this._moduleMap = {};
 
             function w(y) {
@@ -52,21 +52,21 @@ __d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties
                     da = ca + ' did not fire because it has missing dependencies.';
                 throw new Error(da);
             }
-            for (var x in this._moduleIDsToCleanup) ErrorUtils.applyWithGuard(w, this, [x], null, 'ServerJS:cleanup' + ' id: ' + x);
+            for (var x in this._moduleIDsToCleanup) ErrorUtils /*g*/ .applyWithGuard(w, this, [x], null, 'ServerJS:cleanup' + ' id: ' + x);
         },
-        _handleDefine: ErrorUtils.guard(function(u, v, w, x) {
-            ServerJSDefine.handleDefine(u, v, w, x, this._relativeTo);
+        _handleDefine: ErrorUtils /*g*/ .guard(function(u, v, w, x) {
+            ServerJSDefine /*i*/ .handleDefine(u, v, w, x, this._relativeTo);
         }, 'JS::define'),
         _handleRequire: function(u, v, w, x) {
-            return ErrorUtils.applyWithGuard(function() {
+            return ErrorUtils /*g*/ .applyWithGuard(function() {
                 var y = [u].concat(w || []),
                     z = (v ? '__call__' : '__requireModule__') + n++;
                 this._moduleIDsToCleanup[z] = [u, v];
-                return define(z, y, ErrorUtils.guard(function(aa) {
+                return define(z, y, ErrorUtils /*g*/ .guard(function(aa) {
                     delete this._moduleIDsToCleanup[z];
-                    x && replaceTransportMarkers(this._relativeTo, x);
+                    x && replaceTransportMarkers /*m*/ (this._relativeTo, x);
                     if (v) {
-                        if (!aa[v]) throw new TypeError(ex('Module %s has no method "%s"', u, v));
+                        if (!aa[v]) throw new TypeError(ex /*k*/ ('Module %s has no method "%s"', u, v));
                         var ba = {
                             moduleName: u,
                             method: v,
@@ -80,22 +80,22 @@ __d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties
                 }.bind(this), v ? "JS::call('" + u + "', '" + v + "', ...)" : "JS::requireModule('" + u + "')"), 1, this, 1);
             }, this, null, null, v ? 'JS::call' : 'JS::requireModule');
         },
-        _handleInstance: ErrorUtils.guard(function(u, v, w, x) {
+        _handleInstance: ErrorUtils /*g*/ .guard(function(u, v, w, x) {
             var y = null;
             if (v) y = function(z) {
-                replaceTransportMarkers(this._relativeTo, w);
+                replaceTransportMarkers /*m*/ (this._relativeTo, w);
                 var aa = Object.create(z.prototype);
                 z.apply(aa, w);
                 return aa;
             }.bind(this);
             define(u, v, y, 0, null, x);
         }, 'JS::instance'),
-        _handleMarkup: ErrorUtils.guard(function(u, v, w) {
+        _handleMarkup: ErrorUtils /*g*/ .guard(function(u, v, w) {
             define(u, ['HTML'], function(x) {
                 return x.replaceJSONWrapper(v).getRootNode();
             }, 0, null, w);
         }, 'JS::markup'),
-        _handleElement: ErrorUtils.guard(function(u, v, w, x) {
+        _handleElement: ErrorUtils /*g*/ .guard(function(u, v, w, x) {
             if (v === null && w) {
                 define(u, null, null, 0, null, w);
                 return;
@@ -108,10 +108,10 @@ __d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties
                 w++;
             }
             define(u, y, function(aa) {
-                var ba = ge(v, aa);
+                var ba = ge /*l*/ (v, aa);
                 if (!ba) {
                     var ca = 'Could not find element "%s"';
-                    throw new Error(ex(ca, v));
+                    throw new Error(ex /*k*/ (ca, v));
                 }
                 return ba;
             }, z, null, w);
@@ -133,5 +133,5 @@ __d("ServerJS", ["ErrorUtils", "EventEmitter", "ServerJSDefine", "copyProperties
     function t() {
         return {};
     }
-    module.exports = q;
+    module /*e*/ .exports = q;
 });

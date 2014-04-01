@@ -1,4 +1,4 @@
-__d("invariant", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("invariant", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     "use strict";
     var g = function(h) {
         if (!h) {
@@ -7,5 +7,5 @@ __d("invariant", []function(global, require, requireDynamic, requireLazy, module
             throw i;
         }
     };
-    module.exports = g;
+    module /*e*/ .exports = g;
 });

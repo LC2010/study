@@ -1,14 +1,14 @@
-__d("legacy:onload", ["Run", "OnloadEvent"]function(global, require, requireDynamic, requireLazy, module, exports, Run) {
-    global.OnloadEvent = require('OnloadEvent');
-    global.onloadRegister_DEPRECATED = Run.onLoad;
-    global.onloadRegister = function() {
-        return Run.onLoad.apply(this, OnloadEvent);
+__d("legacy:onload", ["Run", "OnloadEvent"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Run /*g*/ ) {
+    global /*a*/ .OnloadEvent = require /*b*/ ('OnloadEvent');
+    global /*a*/ .onloadRegister_DEPRECATED = Run /*g*/ .onLoad;
+    global /*a*/ .onloadRegister = function() {
+        return Run /*g*/ .onLoad.apply(this, OnloadEvent /*arguments*/ );
     };
-    global.onafterloadRegister_DEPRECATED = Run.onAfterLoad;
-    global.onafterloadRegister = function() {
-        return Run.onAfterLoad.apply(this, OnloadEvent);
+    global /*a*/ .onafterloadRegister_DEPRECATED = Run /*g*/ .onAfterLoad;
+    global /*a*/ .onafterloadRegister = function() {
+        return Run /*g*/ .onAfterLoad.apply(this, OnloadEvent /*arguments*/ );
     };
-    global.onleaveRegister = Run.onLeave;
-    global.onbeforeunloadRegister = Run.onBeforeUnload;
-    global.onunloadRegister = Run.onUnload;
+    global /*a*/ .onleaveRegister = Run /*g*/ .onLeave;
+    global /*a*/ .onbeforeunloadRegister = Run /*g*/ .onBeforeUnload;
+    global /*a*/ .onunloadRegister = Run /*g*/ .onUnload;
 });

@@ -1,8 +1,8 @@
-__d("isInIframe", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("isInIframe", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = window != window.top;
 
     function h() {
         return g;
     }
-    module.exports = h;
+    module /*e*/ .exports = h;
 });

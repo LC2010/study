@@ -1,4 +1,4 @@
-__d("URIRFC3986", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("URIRFC3986", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = new RegExp('^' + '([^:/?#]+:)?' + '(//' + '([^\\\\/?#@]*@)?' + '(' + '\\[[A-Fa-f0-9:.]+\\]|' + '[^\\/?#:]*' + ')' + '(:[0-9]*)?' + ')?' + '([^?#]*)' + '(\\?[^#]*)?' + '(#.*)?'),
         h = {
             parse: function(i) {
@@ -18,5 +18,5 @@ __d("URIRFC3986", []function(global, require, requireDynamic, requireLazy, modul
                 return k;
             }
         };
-    module.exports = h;
+    module /*e*/ .exports = h;
 });

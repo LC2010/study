@@ -1,6 +1,6 @@
-__d("setTimeoutAcrossTransitions", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("setTimeoutAcrossTransitions", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     function g(h, i) {
         return setTimeout(h, i, false);
     }
-    module.exports = g;
+    module /*e*/ .exports = g;
 });

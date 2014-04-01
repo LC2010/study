@@ -1,3 +1,3 @@
-__d("legacy:goURI", ["goURI"]function(global, require, requireDynamic, requireLazy) {
-    global.goURI = require('goURI');
+__d("legacy:goURI", ["goURI"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ ) {
+    global /*a*/ .goURI = require /*b*/ ('goURI');
 });

@@ -1,3 +1,3 @@
-__d("legacy:css", ["CSS"]function(global, require, requireDynamic, requireLazy) {
-    global.CSS = require('CSS');
+__d("legacy:css", ["CSS"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ ) {
+    global /*a*/ .CSS = require /*b*/ ('CSS');
 });

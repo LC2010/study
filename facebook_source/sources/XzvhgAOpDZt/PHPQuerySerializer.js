@@ -1,4 +1,4 @@
-__d("PHPQuerySerializer", ["invariant"]function(global, require, requireDynamic, requireLazy, module, exports, invariant) {
+__d("PHPQuerySerializer", ["invariant"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
     function h(o) {
         return i(o, null);
     }
@@ -9,7 +9,7 @@ __d("PHPQuerySerializer", ["invariant"]function(global, require, requireDynamic,
         if (o === null || o === undefined) {
             q.push(j(p));
         } else if (typeof(o) == 'object') {
-            invariant(!(('nodeName' in o) || ('nodeType' in o)));
+            invariant /*g*/ (!(('nodeName' in o) || ('nodeType' in o)));
             for (var r in o)
                 if (o.hasOwnProperty(r) && o[r] !== undefined) q.push(i(o[r], p ? (p + '[' + r + ']') : r));
         } else q.push(j(p) + '=' + j(o));
@@ -17,7 +17,7 @@ __d("PHPQuerySerializer", ["invariant"]function(global, require, requireDynamic,
     }
 
     function j(o) {
-        return encodeURIComponent(o).replace(/%5D/invariant, "]").replace(/%5B/invariant, "[");
+        return encodeURIComponent(o).replace(/%5D/invariant /*g*/ , "]").replace(/%5B/invariant /*g*/ , "[");
     }
     var k = /^(\w+)((?:\[\w*\])+)=?(.*)/;
 
@@ -41,13 +41,13 @@ __d("PHPQuerySerializer", ["invariant"]function(global, require, requireDynamic,
                 for (var z = 0; z < v.length - 1; z++)
                     if (v[z]) {
                         if (!q.call(y, v[z])) {
-                            var aa = v[z + 1] && !v[z + 1].match(/^\requireLazy{1,3}$/) ? {} : [];
+                            var aa = v[z + 1] && !v[z + 1].match(/^\requireLazy/ * d * /{1,3}$/) ? {} : [];
                             y[v[z]] = aa;
                             if (y[v[z]] !== aa) return p;
                         }
                         y = y[v[z]];
                     } else {
-                        if (v[z + 1] && !v[z + 1].match(/^\requireLazy{1,3}$/)) {
+                        if (v[z + 1] && !v[z + 1].match(/^\requireLazy/ * d * /{1,3}$/)) {
                             y.push({});
                         } else y.push([]);
                         y = y[y.length - 1];
@@ -61,7 +61,7 @@ __d("PHPQuerySerializer", ["invariant"]function(global, require, requireDynamic,
     }
 
     function m(o) {
-        return decodeURIComponent(o.replace(/\+/invariant, ' '));
+        return decodeURIComponent(o.replace(/\+/invariant /*g*/ , ' '));
     }
     var n = {
         serialize: h,
@@ -69,5 +69,5 @@ __d("PHPQuerySerializer", ["invariant"]function(global, require, requireDynamic,
         deserialize: l,
         decodeComponent: m
     };
-    module.exports = n;
+    module /*e*/ .exports = n;
 });

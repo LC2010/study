@@ -1,11 +1,11 @@
-__d("InitialJSLoader", ["Arbiter", "Bootloader", "OnloadEvent", "Run", "ServerJS"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter, Bootloader, OnloadEvent, Run, ServerJS) {
+__d("InitialJSLoader", ["Arbiter", "Bootloader", "OnloadEvent", "Run", "ServerJS"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , Bootloader /*h*/ , OnloadEvent /*i*/ , Run /*j*/ , ServerJS /*k*/ ) {
     var l = {
         INITIAL_JS_READY: 'BOOTLOAD/JSREADY',
         loadOnDOMContentReady: function(m, n) {
-            Arbiter.subscribe(OnloadEvent.ONLOAD_DOMCONTENT_CALLBACK, function() {
+            Arbiter /*g*/ .subscribe(OnloadEvent /*i*/ .ONLOAD_DOMCONTENT_CALLBACK, function() {
                 function o() {
-                    Bootloader.loadResources(m, function() {
-                        Arbiter.inform(l.INITIAL_JS_READY, true, Arbiter.BEHAVIOR_STATE);
+                    Bootloader /*h*/ .loadResources(m, function() {
+                        Arbiter /*g*/ .inform(l.INITIAL_JS_READY, true, Arbiter /*g*/ .BEHAVIOR_STATE);
                     });
                 }
                 if (n) {
@@ -14,10 +14,10 @@ __d("InitialJSLoader", ["Arbiter", "Bootloader", "OnloadEvent", "Run", "ServerJS
             });
         },
         handleServerJS: function(m) {
-            var n = new ServerJS();
+            var n = new ServerJS /*k*/ ();
             n.handle(m);
-            Run.onAfterLoad(n.cleanup.bind(n));
+            Run /*j*/ .onAfterLoad(n.cleanup.bind(n));
         }
     };
-    module.exports = l;
+    module /*e*/ .exports = l;
 });

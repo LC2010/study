@@ -1,5 +1,5 @@
-__d("ServerJSDefine", ["BitMap", "replaceTransportMarkers"]function(global, require, requireDynamic, requireLazy, module, exports, BitMap, replaceTransportMarkers) {
-    var i = new BitMap(),
+__d("ServerJSDefine", ["BitMap", "replaceTransportMarkers"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , BitMap /*g*/ , replaceTransportMarkers /*h*/ ) {
+    var i = new BitMap /*g*/ (),
         j = {
             getLoadedModuleHash: function() {
                 return i.toCompressedString();
@@ -7,7 +7,7 @@ __d("ServerJSDefine", ["BitMap", "replaceTransportMarkers"]function(global, requ
             handleDefine: function(k, l, m, n, o) {
                 if (n >= 0) i.set(n);
                 define(k, l, function() {
-                    replaceTransportMarkers(o, m);
+                    replaceTransportMarkers /*h*/ (o, m);
                     return m;
                 });
             },
@@ -18,5 +18,5 @@ __d("ServerJSDefine", ["BitMap", "replaceTransportMarkers"]function(global, requ
                 });
             }
         };
-    module.exports = j;
+    module /*e*/ .exports = j;
 });

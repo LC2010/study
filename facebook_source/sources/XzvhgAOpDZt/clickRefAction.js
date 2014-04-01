@@ -1,4 +1,4 @@
-__d("clickRefAction", ["Arbiter"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter) {
+__d("clickRefAction", ["Arbiter"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
     function h(l, m, n, o, p) {
         var q = l + '/' + m;
         this.ue = q;
@@ -35,15 +35,15 @@ __d("clickRefAction", ["Arbiter"]function(global, require, requireDynamic, requi
         var t = new h(p, i, l, m, q);
         j.push(t);
         while (j.length > 10) j.shift();
-        Arbiter.inform("ClickRefAction/new", {
+        Arbiter /*g*/ .inform("ClickRefAction/new", {
             cfa: t,
             node: m,
             mode: n,
             event: event,
             extra_data: o
-        }, Arbiter.BEHAVIOR_PERSISTENT);
+        }, Arbiter /*g*/ .BEHAVIOR_PERSISTENT);
         i++;
         return t;
     }
-    module.exports = global.clickRefAction = k;
+    module /*e*/ .exports = global /*a*/ .clickRefAction = k;
 });

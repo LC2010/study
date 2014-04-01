@@ -1,4 +1,4 @@
-__d("Miny", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("Miny", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = 'Miny1',
         h = {
             encode: [],
@@ -34,7 +34,7 @@ __d("Miny", []function(global, require, requireDynamic, requireLazy, module, exp
 
     function l(n) {
         var o = n.split('~');
-        if (o.shift() != g) throw new Error('Not global Miny stream');
+        if (o.shift() != g) throw new Error('Not global/*a*/ Miny stream');
         var p = parseInt(o.shift(), 10),
             q = o.pop();
         q = q.match(/[0-9a-v]*[\-w-zA-Z_]/g);
@@ -48,5 +48,5 @@ __d("Miny", []function(global, require, requireDynamic, requireLazy, module, exp
         encode: k,
         decode: l
     };
-    module.exports = m;
+    module /*e*/ .exports = m;
 });

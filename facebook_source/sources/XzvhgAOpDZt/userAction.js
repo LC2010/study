@@ -1,4 +1,4 @@
-__d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter, Banzai, copyProperties) {
+__d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , Banzai /*h*/ , copyProperties /*i*/ ) {
     var j = 50,
         k = [],
         l = {}, m = {};
@@ -7,7 +7,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
         "use strict";
         var z = v + '/' + w,
             aa = u(y);
-        copyProperties(this, {
+        copyProperties /*i*/ (this, {
             ue: z,
             _uai_logged: false,
             _uai_timeout: null,
@@ -34,7 +34,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
             z = o(v, this._ns, 'action', this._get_action_type()),
             aa = (y !== undefined || z !== undefined),
             ba = aa ? (y || z) : x;
-        if (Banzai.isEnabled('useraction') && ba) Banzai.post(v, w, p);
+        if (Banzai /*h*/ .isEnabled('useraction') && ba) Banzai /*h*/ .post(v, w, p);
     };
     n.prototype._get_action_type = function() {
         "use strict";
@@ -47,7 +47,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
     n.prototype._log_uai = function() {
         "use strict";
         var v = [this._info_version, this.ue, this._ns, this._get_ua_id(), this._get_action_type()];
-        this._log('ua:copyProperties', v);
+        this._log('ua:copyProperties/*i*/', v);
         this._uai_logged = true;
         this._uai_timeout = null;
     };
@@ -93,7 +93,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
             aa = y - (x ? x : this._ue_ts),
             ba = [this._event_version, this.ue, this._ns, this._get_ua_id(), this._prev_event, v, z, aa];
         if (this._get_ua_id()) {
-            this._log('ua:module', ba);
+            this._log('ua:module/*e*/', ba);
             this._ts = y;
             this._prev_event = v;
         }
@@ -102,7 +102,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
     n.prototype.add_data = function(v) {
         "use strict";
         var w = [this._data_version, this.ue, v];
-        this._log('ua:requireLazy', w);
+        this._log('ua:requireLazy/*d*/', w);
         return this;
     };
 
@@ -132,7 +132,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
         s = w;
         k.push(z);
         while (k.length > 10) k.shift();
-        Arbiter.inform("UserAction/new", {
+        Arbiter /*g*/ .inform("UserAction/new", {
             ua: z,
             node: w,
             mode: x.mode,
@@ -148,13 +148,13 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global, requir
         return v.nodeName.toLowerCase();
     }
     t.setUATypeConfig = function(v) {
-        copyProperties(l, v);
+        copyProperties /*i*/ (l, v);
     };
     t.setCustomSampleConfig = function(v) {
-        copyProperties(m, v);
+        copyProperties /*i*/ (m, v);
     };
     t.getCurrentUECount = function() {
         return q;
     };
-    module.exports = global.userAction = t;
+    module /*e*/ .exports = global /*a*/ .userAction = t;
 });

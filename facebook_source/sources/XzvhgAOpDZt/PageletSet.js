@@ -1,4 +1,4 @@
-__d("PageletSet", ["Arbiter"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter) {
+__d("PageletSet", ["Arbiter"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
     var h = {}, i = {
             hasPagelet: function(l) {
                 return h.hasOwnProperty(l);
@@ -34,7 +34,7 @@ __d("PageletSet", ["Arbiter"]function(global, require, requireDynamic, requireLa
         this._root = null;
         this._destructors = [];
         this.addDestructor(function m() {
-            Arbiter.inform('pagelet/destroy', {
+            Arbiter /*g*/ .inform('pagelet/destroy', {
                 id: this.id,
                 root: this._root
             });
@@ -72,5 +72,5 @@ __d("PageletSet", ["Arbiter"]function(global, require, requireDynamic, requireLa
         if (this._root)
             while (this._root.firstChild) this._root.removeChild(this._root.firstChild);
     };
-    module.exports = i;
+    module /*e*/ .exports = i;
 });

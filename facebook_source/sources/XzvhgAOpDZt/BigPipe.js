@@ -1,31 +1,31 @@
-__d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEvent", "PageletSet", "Run", "ServerJS", "$", "copyProperties", "ge", "invokeCallbacks", "ix"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter, Bootloader, Env, ErrorUtils, JSCC, OnloadEvent, PageletSet, Run, ServerJS, $, copyProperties, ge, invokeCallbacks, ix) {
-    var u = document.documentMode || +(/MSIE.(\requireLazy+)/.exec(navigator.userAgent) || [])[1],
-        v = Arbiter.BEHAVIOR_STATE,
-        w = Arbiter.BEHAVIOR_PERSISTENT;
+__d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEvent", "PageletSet", "Run", "ServerJS", "$", "copyProperties", "ge", "invokeCallbacks", "ix"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , Bootloader /*h*/ , Env /*i*/ , ErrorUtils /*j*/ , JSCC /*k*/ , OnloadEvent /*l*/ , PageletSet /*m*/ , Run /*n*/ , ServerJS /*o*/ , $ /*p*/ , copyProperties /*q*/ , ge /*r*/ , invokeCallbacks /*s*/ , ix /*t*/ ) {
+    var u = document.documentMode || +(/MSIE.(\requireLazy/ * d * /+)/.exec(navigator.userAgent) || [])[1],
+        v = Arbiter /*g*/ .BEHAVIOR_STATE,
+        w = Arbiter /*g*/ .BEHAVIOR_PERSISTENT;
 
     function x(ba) {
         "use strict";
-        copyProperties(this, {
-            arbiter: Arbiter,
+        copyProperties /*q*/ (this, {
+            arbiter: Arbiter /*g*/ ,
             rootNodeID: 'content',
             lid: 0,
             isAjax: false,
-            domContentCallback: Run.__domContentCallback,
-            onloadCallback: Run.__onloadCallback,
-            domContentEvt: OnloadEvent.ONLOAD_DOMCONTENT_CALLBACK,
-            onloadEvt: OnloadEvent.ONLOAD_CALLBACK,
+            domContentCallback: Run /*n*/ .__domContentCallback,
+            onloadCallback: Run /*n*/ .__onloadCallback,
+            domContentEvt: OnloadEvent /*l*/ .ONLOAD_DOMCONTENT_CALLBACK,
+            onloadEvt: OnloadEvent /*l*/ .ONLOAD_CALLBACK,
             forceFinish: false,
             _phaseDoneCallbacks: [],
             _currentPhase: 0,
             _lastPhase: -1,
             _livePagelets: {}
         });
-        copyProperties(this, ba);
+        copyProperties /*q*/ (this, ba);
         if (this.automatic) {
             this._relevant_instance = x._current_instance;
         } else x._current_instance = this;
-        this._serverJS = new ServerJS();
-        Arbiter.inform('BigPipe/init', {
+        this._serverJS = new ServerJS /*o*/ ();
+        Arbiter /*g*/ .inform('BigPipe/init', {
             lid: this.lid,
             arbiter: this.arbiter
         }, w);
@@ -61,7 +61,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
         for (var da in ba.content) {
             var ea = ba.content[da];
             if (ba.append) da = this._getPageletRootID(ba);
-            var fa = ge(da);
+            var fa = ge /*r*/ (da);
             if (!fa) continue;
             if (da === ca.id) ca.setRoot(fa);
             ea = y(ea);
@@ -73,7 +73,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
                 } else fa.innerHTML = ea;
             var ga = fa.getAttribute('data-referrer');
             if (!ga) fa.setAttribute('data-referrer', da);
-            if (ba.cache_hit && Env.pc_debug) fa.style.border = '1px red solid';
+            if (ba.cache_hit && Env /*i*/ .pc_debug) fa.style.border = '1px red solid';
         }
         if (ba.jsmods) {
             var ha = JSON.parse(JSON.stringify(ba.jsmods)),
@@ -97,19 +97,19 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
     x.prototype._downloadJsForPagelet = function(ba) {
         "use strict";
         this._informPageletEvent('jsstart', ba.id);
-        Bootloader.loadResources(ba.js || [], function() {
+        Bootloader /*h*/ .loadResources(ba.js || [], function() {
             this._informPageletEvent('jsdone', ba.id);
             ba.requires = ba.requires || [];
             if (!this.isAjax || ba.phase >= 1) ba.requires.push('uipage_onload');
             var ca = function() {
                 this._informPageletEvent('preonload', ba.id);
-                if (this._isRelevantPagelet(ba)) invokeCallbacks(ba.onload);
+                if (this._isRelevantPagelet(ba)) invokeCallbacks /*s*/ (ba.onload);
                 this._informPageletEvent('onload', ba.id);
-                this.arbiter.inform('pagelet_onload', true, Arbiter.BEHAVIOR_EVENT);
+                this.arbiter.inform('pagelet_onload', true, Arbiter /*g*/ .BEHAVIOR_EVENT);
                 ba.provides && this.arbiter.inform(ba.provides, true, v);
             }.bind(this),
                 da = function() {
-                    this._isRelevantPagelet(ba) && invokeCallbacks(ba.onafterload);
+                    this._isRelevantPagelet(ba) && invokeCallbacks /*s*/ (ba.onafterload);
                 }.bind(this);
             this.arbiter.registerCallback(ca, ba.requires);
             this.arbiter.registerCallback(da, [this.onloadEvt]);
@@ -118,7 +118,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
     x.prototype._getPagelet = function(ba) {
         "use strict";
         var ca = this._getPageletRootID(ba);
-        return PageletSet.getPagelet(ca);
+        return PageletSet /*m*/ .getPagelet(ca);
     };
     x.prototype._getPageletRootID = function(ba) {
         "use strict";
@@ -156,15 +156,15 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
         "use strict";
         return x._current_instance;
     };
-    copyProperties(x.prototype, {
-        onPageletArrive: ErrorUtils.guard(function(ba) {
+    copyProperties /*q*/ (x.prototype, {
+        onPageletArrive: ErrorUtils /*j*/ .guard(function(ba) {
             this._informPageletEvent('arrive', ba.id, ba.phase);
             ba.content = ba.content || {};
             var ca = ba.phase;
             if (!this._phaseDoneCallbacks[ca]) this._phaseDoneCallbacks[ca] = this.arbiter.registerCallback(this._onPhaseDone.bind(this), ['phase_complete_' + ca]);
             this.arbiter.registerCallback(this._phaseDoneCallbacks[ca], [ba.id + '_displayed']);
             var da = this._getPageletRootID(ba),
-                ea = PageletSet.getOrCreatePagelet(da);
+                ea = PageletSet /*m*/ .getOrCreatePagelet(da);
             if (ba.the_end) this._lastPhase = ca;
             if (ba.tti_phase !== undefined) this._ttiPhase = ba.tti_phase;
             if (ba.is_second_to_last_phase) this._secondToLastPhase = ca;
@@ -174,14 +174,14 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
             }.bind(this));
             if (ba.jscc_map) {
                 var fa = (eval)(ba.jscc_map),
-                    ga = JSCC.init(fa);
+                    ga = JSCC /*k*/ .init(fa);
                 ea.addDestructor(ga);
             }
-            if (ba.resource_map) Bootloader.setResourceMap(ba.resource_map);
-            if (ba.bootloadable) Bootloader.enableBootload(ba.bootloadable);
-            ix.add(ba.ixData);
+            if (ba.resource_map) Bootloader /*h*/ .setResourceMap(ba.resource_map);
+            if (ba.bootloadable) Bootloader /*h*/ .enableBootload(ba.bootloadable);
+            ix /*t*/ .add(ba.ixData);
             this._informPageletEvent('setup', ba.id);
-            var ha = new Arbiter();
+            var ha = new Arbiter /*g*/ ();
             ha.registerCallback(this._displayPageletHandler.bind(this, ba), ['preceding_pagelets_displayed', 'display_resources_downloaded']);
             var ia = ba.display_dependency || [],
                 ja = ia.map(function(la) {
@@ -193,7 +193,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
             this.arbiter.registerCallback(function() {
                 this._informPageletEvent('css', ba.id);
                 var la = (ba.css || []).concat(ba.displayJS || []);
-                Bootloader.loadResources(la, function() {
+                Bootloader /*h*/ .loadResources(la, function() {
                     this._informPageletEvent('css_load', ba.id);
                     ha.inform('display_resources_downloaded');
                 }.bind(this), false, ba.id);
@@ -209,7 +209,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
     function y(ba) {
         if (!ba || typeof ba === 'string') return ba;
         if (ba.container_id) {
-            var ca = $(ba.container_id);
+            var ca = $ /*p*/ (ba.container_id);
             ba = z(ca) || '';
             ca.parentNode.removeChild(ca);
             return ba;
@@ -219,7 +219,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
 
     function z(ba) {
         if (!ba.firstChild) {
-            Bootloader.loadModules(["ErrorSignal"], function(da) {
+            Bootloader /*h*/ .loadModules(["ErrorSignal"], function(da) {
                 da.sendErrorSignal('bigpipe', 'Pagelet markup container is empty.');
             });
             return null;
@@ -227,7 +227,7 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
         if (ba.firstChild.nodeType !== 8) return null;
         var ca = ba.firstChild.nodeValue;
         ca = ca.substring(1, ca.length - 1);
-        return ca.replace(/\\([\invokeCallbacks\S]|$)/Arbiter, '$1');
+        return ca.replace(/\\([\invokeCallbacks/*s*/\S]|$)/Arbiter /*g*/ , '$1');
     }
 
     function aa(ba, ca) {
@@ -240,5 +240,5 @@ __d("BigPipe", ["Arbiter", "Bootloader", "Env", "ErrorUtils", "JSCC", "OnloadEve
         ba.appendChild(fa);
         if (ea) ba.removeChild(da);
     }
-    module.exports = x;
+    module /*e*/ .exports = x;
 });

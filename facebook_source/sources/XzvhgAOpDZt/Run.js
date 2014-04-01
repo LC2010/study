@@ -1,10 +1,10 @@
-__d("Run", ["Arbiter", "OnloadEvent"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter, OnloadEvent) {
+__d("Run", ["Arbiter", "OnloadEvent"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , OnloadEvent /*h*/ ) {
     var i = 'onunloadhooks',
         j = 'onafterunloadhooks',
-        k = Arbiter.BEHAVIOR_STATE;
+        k = Arbiter /*g*/ .BEHAVIOR_STATE;
 
     function l(ba) {
-        var ca = global.CavalryLogger;
+        var ca = global /*a*/ .CavalryLogger;
         ca && ca.getInstance().setTimeStamp(ba);
     }
 
@@ -13,14 +13,14 @@ __d("Run", ["Arbiter", "OnloadEvent"]function(global, require, requireDynamic, r
     }
 
     function n(ba) {
-        var ca = global.OnloadHooks;
+        var ca = global /*a*/ .OnloadHooks;
         if (window.loaded && ca) {
             ca.runHook(ba, 'onlateloadhooks');
         } else u('onloadhooks', ba);
     }
 
     function o(ba) {
-        var ca = global.OnloadHooks;
+        var ca = global /*a*/ .OnloadHooks;
         if (window.afterloaded && ca) {
             setTimeout(function() {
                 ca.runHook(ba, 'onlateafterloadhooks');
@@ -35,7 +35,7 @@ __d("Run", ["Arbiter", "OnloadEvent"]function(global, require, requireDynamic, r
 
     function q(ba, ca) {
         if (!window.onunload) window.onunload = function() {
-            Arbiter.inform(OnloadEvent.ONUNLOAD, true, k);
+            Arbiter /*g*/ .inform(OnloadEvent /*h*/ .ONUNLOAD, true, k);
         };
         u(ba, ca);
     }
@@ -61,15 +61,15 @@ __d("Run", ["Arbiter", "OnloadEvent"]function(global, require, requireDynamic, r
     }
 
     function w() {
-        Arbiter.inform(OnloadEvent.ONLOAD_DOMCONTENT, true, k);
+        Arbiter /*g*/ .inform(OnloadEvent /*h*/ .ONLOAD_DOMCONTENT, true, k);
     }
-    global._domcontentready = w;
+    global /*a*/ ._domcontentready = w;
 
     function x() {
         var ba = document,
             ca = window;
         if (ba.addEventListener) {
-            var da = /AppleWebKit.(\requireLazy+)/.exec(navigator.userAgent);
+            var da = /AppleWebKit.(\requireLazy/ * d * /+)/.exec(navigator.userAgent);
             if (da && da[1] < 525) {
                 var ea = setInterval(function() {
                     if (/loaded|complete/.test(ba.readyState)) {
@@ -87,26 +87,26 @@ __d("Run", ["Arbiter", "OnloadEvent"]function(global, require, requireDynamic, r
         ca.onload = function() {
             l('t_layout');
             ga && ga();
-            Arbiter.inform(OnloadEvent.ONLOAD, true, k);
+            Arbiter /*g*/ .inform(OnloadEvent /*h*/ .ONLOAD, true, k);
         };
         ca.onbeforeunload = function() {
             var ha = {};
-            Arbiter.inform(OnloadEvent.ONBEFOREUNLOAD, ha, k);
-            if (!ha.warn) Arbiter.inform('onload/exit', true);
+            Arbiter /*g*/ .inform(OnloadEvent /*h*/ .ONBEFOREUNLOAD, ha, k);
+            if (!ha.warn) Arbiter /*g*/ .inform('onload/exit', true);
             return ha.warn;
         };
     }
-    var y = Arbiter.registerCallback(function() {
+    var y = Arbiter /*g*/ .registerCallback(function() {
         l('t_onload');
-        Arbiter.inform(OnloadEvent.ONLOAD_CALLBACK, true, k);
-    }, [OnloadEvent.ONLOAD]),
-        z = Arbiter.registerCallback(function() {
+        Arbiter /*g*/ .inform(OnloadEvent /*h*/ .ONLOAD_CALLBACK, true, k);
+    }, [OnloadEvent /*h*/ .ONLOAD]),
+        z = Arbiter /*g*/ .registerCallback(function() {
             l('t_domcontent');
             var ba = {
                 timeTriggered: Date.now()
             };
-            Arbiter.inform(OnloadEvent.ONLOAD_DOMCONTENT_CALLBACK, ba, k);
-        }, [OnloadEvent.ONLOAD_DOMCONTENT]);
+            Arbiter /*g*/ .inform(OnloadEvent /*h*/ .ONLOAD_DOMCONTENT_CALLBACK, ba, k);
+        }, [OnloadEvent /*h*/ .ONLOAD_DOMCONTENT]);
     x();
     var aa = {
         onLoad: n,
@@ -119,5 +119,5 @@ __d("Run", ["Arbiter", "OnloadEvent"]function(global, require, requireDynamic, r
         __onloadCallback: y,
         __removeHook: v
     };
-    module.exports = aa;
+    module /*e*/ .exports = aa;
 });

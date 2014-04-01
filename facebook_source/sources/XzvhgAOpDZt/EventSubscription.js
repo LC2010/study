@@ -1,4 +1,4 @@
-__d("EventSubscription", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("EventSubscription", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     'use strict';
 
     function g(h) {
@@ -7,5 +7,5 @@ __d("EventSubscription", []function(global, require, requireDynamic, requireLazy
     g.prototype.remove = function() {
         this.subscriber.removeSubscription(this);
     };
-    module.exports = g;
+    module /*e*/ .exports = g;
 });

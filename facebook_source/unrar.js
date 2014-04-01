@@ -60,7 +60,7 @@ function __d(name, deps, factory) {
             arg = getArg(factory);
         }
         if (arg) {
-            factoryOutput = replaceVar(factoryOutput, arg, allDeps[i]);
+            factoryOutput = replaceVar(factoryOutput, arg, allDeps[i] + "/*" + arg + "*/");
         } else {
             break;
         }

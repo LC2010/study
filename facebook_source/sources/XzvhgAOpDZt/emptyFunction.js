@@ -1,4 +1,4 @@
-__d("emptyFunction", ["copyProperties"]function(global, require, requireDynamic, requireLazy, module, exports, copyProperties) {
+__d("emptyFunction", ["copyProperties"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , copyProperties /*g*/ ) {
     function h(j) {
         return function() {
             return j;
@@ -6,7 +6,7 @@ __d("emptyFunction", ["copyProperties"]function(global, require, requireDynamic,
     }
 
     function i() {}
-    copyProperties(i, {
+    copyProperties /*g*/ (i, {
         thatReturns: h,
         thatReturnsFalse: h(false),
         thatReturnsTrue: h(true),
@@ -18,5 +18,5 @@ __d("emptyFunction", ["copyProperties"]function(global, require, requireDynamic,
             return j;
         }
     });
-    module.exports = i;
+    module /*e*/ .exports = i;
 });

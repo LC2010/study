@@ -1,6 +1,6 @@
-__d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStorage", "WebStorageMutex", "emptyFunction", "isInIframe", "pageID", "setTimeoutAcrossTransitions"]function(global, require, requireDynamic, requireLazy, module, exports, BanzaiAdapter, CurrentUser, ErrorUtils, FBJSON, WebStorage, WebStorageMutex, emptyFunction, isInIframe, pageID, setTimeoutAcrossTransitions) {
-    var q = BanzaiAdapter.adapter,
-        r = isInIframe(),
+__d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStorage", "WebStorageMutex", "emptyFunction", "isInIframe", "pageID", "setTimeoutAcrossTransitions"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , BanzaiAdapter /*g*/ , CurrentUser /*h*/ , ErrorUtils /*i*/ , FBJSON /*j*/ , WebStorage /*k*/ , WebStorageMutex /*l*/ , emptyFunction /*m*/ , isInIframe /*n*/ , pageID /*o*/ , setTimeoutAcrossTransitions /*p*/ ) {
+    var q = BanzaiAdapter /*g*/ .adapter,
+        r = isInIframe /*n*/ (),
         s = 'bz:',
         t = 0,
         u = 1,
@@ -9,7 +9,7 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
         z = null;
 
     function aa(fa) {
-        return fa[2] >= Date.now() - (q.config.EXPIRY || BanzaiAdapter.EXPIRY);
+        return fa[2] >= Date.now() - (q.config.EXPIRY || BanzaiAdapter /*g*/ .EXPIRY);
     }
 
     function ba(fa) {
@@ -17,16 +17,16 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
         if (!x || ga < x) {
             x = ga;
             clearTimeout(w);
-            w = setTimeoutAcrossTransitions(ca, fa);
+            w = setTimeoutAcrossTransitions /*p*/ (ca, fa);
             return true;
         }
     }
 
     function ca() {
         x = null;
-        ba(BanzaiAdapter.BASIC.delay);
+        ba(BanzaiAdapter /*g*/ .BASIC.delay);
         if (!q.readyToSend()) return;
-        q.inform(BanzaiAdapter.SEND);
+        q.inform(BanzaiAdapter /*g*/ .SEND);
         var fa = [],
             ga = [],
             ha = {};
@@ -34,7 +34,7 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
             var ja = ia.__meta;
             if (ja.status >= v || !aa(ia)) return false;
             if (ja.status >= u) return true;
-            var ka = ja.pageID + CurrentUser.getID(),
+            var ka = ja.pageID + CurrentUser /*h*/ .getID(),
                 la = ha[ka];
             if (!la) {
                 la = {
@@ -51,7 +51,7 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
             return ja.retry;
         });
         if (fa.length <= 0) {
-            q.inform(BanzaiAdapter.OK);
+            q.inform(BanzaiAdapter /*g*/ .OK);
             return;
         }
         fa[0].trigger = z;
@@ -70,7 +70,7 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
             });
         });
     }
-    var da, ea = WebStorage.getLocalStorage();
+    var da, ea = WebStorage /*k*/ .getLocalStorage();
     if (ea && !r) {
         da = {
             store: function fa() {
@@ -79,10 +79,10 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
                     return [ha[0], ha[1], ha[2], ha[3] || 0, ha.__meta];
                 });
                 y = [];
-                ea.setItem(s + pageID + '.' + Date.now(), FBJSON.stringify(ga));
+                ea.setItem(s + pageID /*o*/ + '.' + Date.now(), FBJSON /*j*/ .stringify(ga));
             },
             restore: function fa() {
-                (new WebStorageMutex('banzai')).lock(function(ga) {
+                (new WebStorageMutex /*l*/ ('banzai')).lock(function(ga) {
                     var ha = [];
                     for (var ia = 0; ia < ea.length; ia++) {
                         var ja = ea.key(ia);
@@ -92,12 +92,12 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
                         var la = ea.getItem(ka);
                         ea.removeItem(ka);
                         if (!la) return;
-                        var ma = FBJSON.parse(la, module.id);
+                        var ma = FBJSON /*j*/ .parse(la, module /*e*/ .id);
                         ma.forEach(function(na) {
                             if (!na) return;
                             var oa = na.__meta = na.pop(),
                                 pa = aa(na);
-                            if (pa && oa.userID == CurrentUser.getID()) {
+                            if (pa && oa.userID == CurrentUser /*h*/ .getID()) {
                                 oa.status = t;
                                 y.push(na);
                             }
@@ -108,27 +108,27 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
             }
         };
     } else da = {
-        store: emptyFunction,
-        restore: emptyFunction
+        store: emptyFunction /*m*/ ,
+        restore: emptyFunction /*m*/
     };
-    BanzaiAdapter.SEND = 'Banzai:SEND';
-    BanzaiAdapter.OK = 'Banzai:OK';
-    BanzaiAdapter.ERROR = 'Banzai:ERROR';
-    BanzaiAdapter.SHUTDOWN = 'Banzai:SHUTDOWN';
-    BanzaiAdapter.SEND_TIMEOUT = 15000;
-    BanzaiAdapter.VITAL_WAIT = 1000;
-    BanzaiAdapter.BASIC_WAIT = 60000;
-    BanzaiAdapter.EXPIRY = 30 * 60000;
-    BanzaiAdapter.VITAL = {
-        delay: q.config.MIN_WAIT || BanzaiAdapter.VITAL_WAIT
+    BanzaiAdapter /*g*/ .SEND = 'Banzai:SEND';
+    BanzaiAdapter /*g*/ .OK = 'Banzai:OK';
+    BanzaiAdapter /*g*/ .ERROR = 'Banzai:ERROR';
+    BanzaiAdapter /*g*/ .SHUTDOWN = 'Banzai:SHUTDOWN';
+    BanzaiAdapter /*g*/ .SEND_TIMEOUT = 15000;
+    BanzaiAdapter /*g*/ .VITAL_WAIT = 1000;
+    BanzaiAdapter /*g*/ .BASIC_WAIT = 60000;
+    BanzaiAdapter /*g*/ .EXPIRY = 30 * 60000;
+    BanzaiAdapter /*g*/ .VITAL = {
+        delay: q.config.MIN_WAIT || BanzaiAdapter /*g*/ .VITAL_WAIT
     };
-    BanzaiAdapter.BASIC = {
-        delay: q.config.MAX_WAIT || BanzaiAdapter.BASIC_WAIT
+    BanzaiAdapter /*g*/ .BASIC = {
+        delay: q.config.MAX_WAIT || BanzaiAdapter /*g*/ .BASIC_WAIT
     };
-    BanzaiAdapter.FBTRACE = q.config.fbtrace, BanzaiAdapter.isEnabled = function(fa) {
+    BanzaiAdapter /*g*/ .FBTRACE = q.config.fbtrace, BanzaiAdapter /*g*/ .isEnabled = function(fa) {
         return q.config.gks && q.config.gks[fa];
     };
-    BanzaiAdapter.post = function(fa, ga, ha) {
+    BanzaiAdapter /*g*/ .post = function(fa, ga, ha) {
         var ia = ha && ha.retry === true,
             ja = ha && ha.delay;
         if (q.config.disabled) return;
@@ -140,7 +140,7 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
         if (r && document.domain == 'facebook.com') {
             var la;
             try {
-                la = global.top.require('Banzai');
+                la = global /*a*/ .top.require('Banzai');
             } catch (ma) {
                 la = null;
             }
@@ -152,37 +152,37 @@ __d("Banzai", ["BanzaiAdapter", "CurrentUser", "ErrorUtils", "FBJSON", "WebStora
         var na = [fa, ga, Date.now(), 0];
         na.__meta = {
             retry: ia,
-            pageID: pageID,
-            userID: CurrentUser.getID(),
+            pageID: pageID /*o*/ ,
+            userID: CurrentUser /*h*/ .getID(),
             status: t
         };
         y.push(na);
-        ja != null ? ja : BanzaiAdapter.BASIC_WAIT;
+        ja != null ? ja : BanzaiAdapter /*g*/ .BASIC_WAIT;
         if (ba(ja) || !z) z = fa;
     };
-    BanzaiAdapter.subscribe = q.subscribe;
-    BanzaiAdapter._schedule = ba;
-    BanzaiAdapter._store = function(fa) {
-        ErrorUtils.applyWithGuard(da.store, da);
+    BanzaiAdapter /*g*/ .subscribe = q.subscribe;
+    BanzaiAdapter /*g*/ ._schedule = ba;
+    BanzaiAdapter /*g*/ ._store = function(fa) {
+        ErrorUtils /*i*/ .applyWithGuard(da.store, da);
     };
-    BanzaiAdapter._restore = function(fa) {
-        ErrorUtils.applyWithGuard(da.restore, da);
-        ba(q.config.RESTORE_WAIT || BanzaiAdapter.VITAL_WAIT);
+    BanzaiAdapter /*g*/ ._restore = function(fa) {
+        ErrorUtils /*i*/ .applyWithGuard(da.restore, da);
+        ba(q.config.RESTORE_WAIT || BanzaiAdapter /*g*/ .VITAL_WAIT);
     };
-    BanzaiAdapter._unload = function() {
+    BanzaiAdapter /*g*/ ._unload = function() {
         q.cleanup();
-        q.inform(BanzaiAdapter.SHUTDOWN);
-        ErrorUtils.applyWithGuard(da.store, da);
+        q.inform(BanzaiAdapter /*g*/ .SHUTDOWN);
+        ErrorUtils /*i*/ .applyWithGuard(da.store, da);
     };
-    BanzaiAdapter._testState = function() {
+    BanzaiAdapter /*g*/ ._testState = function() {
         return {
             postBuffer: y,
             triggerRoute: z
         };
     };
-    if (BanzaiAdapter.isEnabled('adapterhooks')) {
+    if (BanzaiAdapter /*g*/ .isEnabled('adapterhooks')) {
         q.setHooks(da);
-    } else q.onUnload(BanzaiAdapter._unload);
-    BanzaiAdapter._restore();
-    module.exports = BanzaiAdapter;
+    } else q.onUnload(BanzaiAdapter /*g*/ ._unload);
+    BanzaiAdapter /*g*/ ._restore();
+    module /*e*/ .exports = BanzaiAdapter /*g*/ ;
 });

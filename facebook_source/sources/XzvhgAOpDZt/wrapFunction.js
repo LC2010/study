@@ -1,4 +1,4 @@
-__d("wrapFunction", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("wrapFunction", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = {};
 
     function h(i, j, k) {
@@ -12,5 +12,5 @@ __d("wrapFunction", []function(global, require, requireDynamic, requireLazy, mod
         j = j || 'default';
         g[j] = i;
     };
-    module.exports = h;
+    module /*e*/ .exports = h;
 });

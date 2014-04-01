@@ -1,11 +1,11 @@
-__d("BanzaiAdapter", ["Arbiter", "CurrentUser", "Miny", "QueryString", "Run", "SiteData", "UserAgent", "getAsyncParams", "getSameOriginTransport", "setTimeoutAcrossTransitions", "BanzaiConfig"]function(global, require, requireDynamic, requireLazy, module, exports, Arbiter, CurrentUser, Miny, QueryString, Run, SiteData, UserAgent, getAsyncParams, getSameOriginTransport, setTimeoutAcrossTransitions, BanzaiConfig) {
+__d("BanzaiAdapter", ["Arbiter", "CurrentUser", "Miny", "QueryString", "Run", "SiteData", "UserAgent", "getAsyncParams", "getSameOriginTransport", "setTimeoutAcrossTransitions", "BanzaiConfig"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , CurrentUser /*h*/ , Miny /*i*/ , QueryString /*j*/ , Run /*k*/ , SiteData /*l*/ , UserAgent /*m*/ , getAsyncParams /*n*/ , getSameOriginTransport /*o*/ , setTimeoutAcrossTransitions /*p*/ , BanzaiConfig /*q*/ ) {
     var r = null,
-        s = new Arbiter(),
+        s = new Arbiter /*g*/ (),
         t = '/ajax/bz',
         u = {}, v = u.adapter = {
-            config: BanzaiConfig,
+            config: BanzaiConfig /*q*/ ,
             getUserID: function() {
-                return CurrentUser.getID();
+                return CurrentUser /*h*/ .getID();
             },
             inform: function(w) {
                 s.inform(w);
@@ -21,12 +21,12 @@ __d("BanzaiAdapter", ["Arbiter", "CurrentUser", "Miny", "QueryString", "Run", "S
                 }
             },
             readyToSend: function() {
-                var w = UserAgent.ie() <= 8 ? true : navigator.onLine;
+                var w = UserAgent /*m*/ .ie() <= 8 ? true : navigator.onLine;
                 return !r && w;
             },
             send: function(w, x, y) {
                 var z = 'POST';
-                r = getSameOriginTransport();
+                r = getSameOriginTransport /*o*/ ();
                 r.open(z, t, true);
                 r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 r.onreadystatechange = function() {
@@ -47,28 +47,28 @@ __d("BanzaiAdapter", ["Arbiter", "CurrentUser", "Miny", "QueryString", "Run", "S
                         }
                     }
                 };
-                setTimeoutAcrossTransitions(v.cleanup, u.SEND_TIMEOUT);
-                var aa = getAsyncParams(z);
-                aa.BanzaiConfig = JSON.stringify(w);
+                setTimeoutAcrossTransitions /*p*/ (v.cleanup, u.SEND_TIMEOUT);
+                var aa = getAsyncParams /*n*/ (z);
+                aa.BanzaiConfig /*q*/ = JSON.stringify(w);
                 aa.ts = Date.now();
-                aa.ph = SiteData.push_phase;
+                aa.ph = SiteData /*l*/ .push_phase;
                 if (u.FBTRACE) aa.fbtrace = u.FBTRACE;
                 if (u.isEnabled('miny_compression')) {
                     var ba = Date.now(),
-                        ca = Miny.encode(aa.BanzaiConfig);
-                    if (ca.length < aa.BanzaiConfig.length) {
-                        aa.BanzaiConfig = ca;
+                        ca = Miny /*i*/ .encode(aa.BanzaiConfig /*q*/ );
+                    if (ca.length < aa.BanzaiConfig /*q*/ .length) {
+                        aa.BanzaiConfig /*q*/ = ca;
                         aa.miny_encode_ms = Date.now() - ba;
                     }
                 }
-                r.send(QueryString.encode(aa));
+                r.send(QueryString /*j*/ .encode(aa));
             },
             setHooks: function(w) {
-                Run.onAfterUnload(u._unload);
+                Run /*k*/ .onAfterUnload(u._unload);
             },
             onUnload: function(w) {
-                Run.onAfterUnload(w);
+                Run /*k*/ .onAfterUnload(w);
             }
         };
-    module.exports = u;
+    module /*e*/ .exports = u;
 });

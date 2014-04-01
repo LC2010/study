@@ -1,4 +1,4 @@
-__d("OnloadEvent", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("OnloadEvent", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = {
         ONLOAD: 'onload/onload',
         ONLOAD_CALLBACK: 'onload/onload_callback',
@@ -7,5 +7,5 @@ __d("OnloadEvent", []function(global, require, requireDynamic, requireLazy, modu
         ONBEFOREUNLOAD: 'onload/beforeunload',
         ONUNLOAD: 'onload/unload'
     };
-    module.exports = g;
+    module /*e*/ .exports = g;
 });

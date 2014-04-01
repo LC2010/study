@@ -1,4 +1,4 @@
-__d("isEmpty", []function(global, require, requireDynamic, requireLazy, module, exports) {
+__d("isEmpty", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     function g(h) {
         if (Array.isArray(h)) {
             return h.length === 0;
@@ -7,5 +7,5 @@ __d("isEmpty", []function(global, require, requireDynamic, requireLazy, module, 
             return true;
         } else return !h;
     }
-    module.exports = g;
+    module /*e*/ .exports = g;
 });
