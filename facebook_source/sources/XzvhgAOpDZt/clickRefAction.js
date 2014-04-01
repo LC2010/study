@@ -1,4 +1,4 @@
-__d("clickRefAction", ["Arbiter"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
+__d("clickRefAction", ["Arbiter"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
     function h(l, m, n, o, p) {
         var q = l + '/' + m;
         this.ue = q;

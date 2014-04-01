@@ -1,4 +1,4 @@
-__d("emptyFunction", ["copyProperties"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , copyProperties /*g*/ ) {
+__d("emptyFunction", ["copyProperties"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , copyProperties /*g*/ ) {
     function h(j) {
         return function() {
             return j;

@@ -1,4 +1,4 @@
-__d("EmitterSubscription", ["EventSubscription"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , EventSubscription /*g*/ ) {
+__d("EmitterSubscription", ["EventSubscription"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , EventSubscription /*g*/ ) {
     'use strict';
     for (var h in EventSubscription /*g*/ )
         if (EventSubscription /*g*/ .hasOwnProperty(h)) j[h] = EventSubscription /*g*/ [h];

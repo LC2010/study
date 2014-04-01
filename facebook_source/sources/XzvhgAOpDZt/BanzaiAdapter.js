@@ -1,4 +1,4 @@
-__d("BanzaiAdapter", ["Arbiter", "CurrentUser", "Miny", "QueryString", "Run", "SiteData", "UserAgent", "getAsyncParams", "getSameOriginTransport", "setTimeoutAcrossTransitions", "BanzaiConfig"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , CurrentUser /*h*/ , Miny /*i*/ , QueryString /*j*/ , Run /*k*/ , SiteData /*l*/ , UserAgent /*m*/ , getAsyncParams /*n*/ , getSameOriginTransport /*o*/ , setTimeoutAcrossTransitions /*p*/ , BanzaiConfig /*q*/ ) {
+__d("BanzaiAdapter", ["Arbiter", "CurrentUser", "Miny", "QueryString", "Run", "SiteData", "UserAgent", "getAsyncParams", "getSameOriginTransport", "setTimeoutAcrossTransitions", "BanzaiConfig"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , CurrentUser /*h*/ , Miny /*i*/ , QueryString /*j*/ , Run /*k*/ , SiteData /*l*/ , UserAgent /*m*/ , getAsyncParams /*n*/ , getSameOriginTransport /*o*/ , setTimeoutAcrossTransitions /*p*/ , BanzaiConfig /*q*/ ) {
     var r = null,
         s = new Arbiter /*g*/ (),
         t = '/ajax/bz',

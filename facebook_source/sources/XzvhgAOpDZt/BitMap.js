@@ -1,4 +1,4 @@
-__d("BitMap", ["copyProperties", "repeatString"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , copyProperties /*g*/ , repeatString /*h*/ ) {
+__d("BitMap", ["copyProperties", "repeatString"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , copyProperties /*g*/ , repeatString /*h*/ ) {
     var i = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
 
     function j() {

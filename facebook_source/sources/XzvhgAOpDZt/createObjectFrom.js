@@ -1,4 +1,4 @@
-__d("createObjectFrom", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("createObjectFrom", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     function g(h, i) {
         var j = {}, k = Array.isArray(i);
         if (typeof i == 'undefined') i = true;

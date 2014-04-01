@@ -1,4 +1,4 @@
-__d("trackReferrer", ["Parent"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Parent /*g*/ ) {
+__d("trackReferrer", ["Parent"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Parent /*g*/ ) {
     function h(i, j) {
         i = Parent /*g*/ .byAttribute(i, 'data-referrer');
         if (i) {

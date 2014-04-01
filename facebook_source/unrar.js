@@ -70,6 +70,7 @@ function __d(name, deps, factory) {
     output.push(JSON.stringify(name));
     output.push(",");
     output.push(JSON.stringify(deps));
+    output.push(",");
     output.push(factoryOutput);
     output.push(");");
     fs.writeFileSync(name.replace(/[ :]/g, ".") + ".js", output.join(""));

@@ -1,4 +1,4 @@
-__d("wait_for_load", ["Bootloader", "Run"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Bootloader /*g*/ , Run /*h*/ ) {
+__d("wait_for_load", ["Bootloader", "Run"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Bootloader /*g*/ , Run /*h*/ ) {
     function i(l, m) {
         return window.loaded && m.call(l);
     }

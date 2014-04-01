@@ -1,4 +1,4 @@
-__d("PHPQuerySerializer", ["invariant"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
+__d("PHPQuerySerializer", ["invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
     function h(o) {
         return i(o, null);
     }

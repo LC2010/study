@@ -1,4 +1,4 @@
-__d("UserAgent", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("UserAgent", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = false,
         h, i, j, k, l, m, n, o, p, q, r, s, t, u, v;
 

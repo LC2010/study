@@ -1,4 +1,4 @@
-__d("WebStorage", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("WebStorage", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = {}, h = {
             getLocalStorage: function() {
                 return i('localStorage');

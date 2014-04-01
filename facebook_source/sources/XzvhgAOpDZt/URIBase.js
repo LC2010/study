@@ -1,4 +1,4 @@
-__d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , URIRFC3986 /*g*/ , URISchemes /*h*/ , copyProperties /*i*/ , ex /*j*/ , invariant /*k*/ ) {
+__d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , URIRFC3986 /*g*/ , URISchemes /*h*/ , copyProperties /*i*/ , ex /*j*/ , invariant /*k*/ ) {
     var l = new RegExp('[\\x00-\\x2c\\x2f\\x3b-\\x40\\x5c\\x5e\\x60\\x7b-\\x7f' + '\\uFDD0-\\uFDEF\\uFFF0-\\uFFFF' + '\\u2047\\u2048\\uFE56\\uFE5F\\uFF03\\uFF0F\\uFF1F]'),
         m = new RegExp('^(?:[^/]*:|' + '[\\x00-\\x1f]*/[\\x00-\\x1f]*/)');
 

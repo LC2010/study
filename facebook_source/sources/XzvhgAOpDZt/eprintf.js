@@ -1,4 +1,4 @@
-__d("eprintf", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("eprintf", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     var g = function(h) {
         var i = Array.prototype.slice.call(arguments).map(function(l) {
             return String(l);

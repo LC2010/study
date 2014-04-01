@@ -1,4 +1,4 @@
-__d("event-form-bubbling", []function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("event-form-bubbling", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
     global /*a*/ .Event = global /*a*/ .Event || function() {};
     global /*a*/ .Event.__inlineSubmit = function(g, event) {
         var h = (global /*a*/ .Event.__getHandler && global /*a*/ .Event.__getHandler(g, 'submit'));

@@ -1,4 +1,4 @@
-__d("goURI", ["URISchemes"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , URISchemes /*g*/ ) {
+__d("goURI", ["URISchemes"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , URISchemes /*g*/ ) {
     function h(i, j, k) {
         i = i.toString();
         if (/^([^.:/?#]+):/.test(i) && !URISchemes /*g*/ .isAllowed(RegExp.$1)) throw new Error('goURI: URI scheme rejected, URI: ' + i);

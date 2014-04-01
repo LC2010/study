@@ -1,4 +1,4 @@
-__d("BlueBarController", ["Bootloader", "CSS"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Bootloader /*g*/ , CSS /*h*/ ) {
+__d("BlueBarController", ["Bootloader", "CSS"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Bootloader /*g*/ , CSS /*h*/ ) {
     exports /*f*/ .init = function(i) {
         if ('getBoundingClientRect' in i) {
             var j = function() {

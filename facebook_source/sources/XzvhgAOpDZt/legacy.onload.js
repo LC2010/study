@@ -1,4 +1,4 @@
-__d("legacy:onload", ["Run", "OnloadEvent"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Run /*g*/ ) {
+__d("legacy:onload", ["Run", "OnloadEvent"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Run /*g*/ ) {
     global /*a*/ .OnloadEvent = require /*b*/ ('OnloadEvent');
     global /*a*/ .onloadRegister_DEPRECATED = Run /*g*/ .onLoad;
     global /*a*/ .onloadRegister = function() {

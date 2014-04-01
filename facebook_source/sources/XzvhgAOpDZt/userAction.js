@@ -1,4 +1,4 @@
-__d("userAction", ["Arbiter", "Banzai", "copyProperties"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , Banzai /*h*/ , copyProperties /*i*/ ) {
+__d("userAction", ["Arbiter", "Banzai", "copyProperties"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , Banzai /*h*/ , copyProperties /*i*/ ) {
     var j = 50,
         k = [],
         l = {}, m = {};

@@ -1,4 +1,4 @@
-__d("URLFragmentPrelude", ["ScriptPath", "URLFragmentPreludeConfig"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , ScriptPath /*g*/ , URLFragmentPreludeConfig /*h*/ ) {
+__d("URLFragmentPrelude", ["ScriptPath", "URLFragmentPreludeConfig"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , ScriptPath /*g*/ , URLFragmentPreludeConfig /*h*/ ) {
     var i = /^(?:(?:[^:\/?#]+):)?(?:\/\/(?:[^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/,
         j = '',
         k = /^[^\/\\#!\.\?\*\&\^=]+$/;

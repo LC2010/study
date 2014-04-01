@@ -1,4 +1,4 @@
-__d("CSSCore", ["invariant"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
+__d("CSSCore", ["invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
     var h = {
         addClass: function(i, j) {
             invariant /*g*/ (!/\s/.test(j));

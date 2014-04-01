@@ -1,4 +1,4 @@
-__d("ArbiterMixin", ["Arbiter"]function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
+__d("ArbiterMixin", ["Arbiter"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
     var h = {
         _getArbiterInstance: function() {
             return this._arbiter || (this._arbiter = new Arbiter /*g*/ ());
