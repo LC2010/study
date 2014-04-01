@@ -103,15 +103,16 @@ __d("ErrorUtils",["Env","eprintf","erx","wrapFunction"],function (global/*a*/, r
             la.guard = la.guard || w[0];
             la.guardList = w.slice();
         }
-        la = aa(la);
-        !ma;
-        if (u.length > v) u.splice(v / 2, 1);
-        u.push(la);
-        y = true;
-        for (var na = 0; na < s.length; na++) try {
-            s[na](la);
-        } catch (oa) {}
-        y = false;
+        errObj = normalizeError(errObj);
+        !ma; //不明觉厉
+        if (history.length > maxLen)
+            history.splice(maxLen / 2, 1);
+        history.push(errObj);
+        errReporting = true;
+        for (var i = 0; i < listeners.length; i++) try {
+            listeners[i](errObj);
+        } catch (e) { }
+        errReporting = false;
         return true;
     }
 
@@ -167,15 +168,15 @@ __d("ErrorUtils",["Env","eprintf","erx","wrapFunction"],function (global/*a*/, r
     }
     wrapFunction/*j*/.setWrapper(ga, 'entry');
 
-    function ha(la, ma, na, oa, pa) {
-        pa = pa || {};
-        pa.message = pa.message || la;
-        pa.script = pa.script || ma;
-        pa.line = pa.line || na;
-        pa.column = pa.column || oa;
-        pa.guard = n;
-        pa.guardList = [n];
-        ba(pa, true);
+    function onerror(errMsg, script, line, column, errObj) {
+        errObj = errObj || {};
+        errObj.message = errObj.message || errMsg;
+        errObj.script = errObj.script || script;
+        errObj.line = errObj.line || line;
+        errObj.column = errObj.column || column;
+        errObj.guard = GLOBAL_ERROR_HANDLER_TAG;
+        errObj.guardList = [GLOBAL_ERROR_HANDLER_TAG];
+        reportError(errObj, true);
     }
     window.onerror = ha;
 
@@ -201,6 +202,7 @@ __d("ErrorUtils",["Env","eprintf","erx","wrapFunction"],function (global/*a*/, r
         onerror: ha,
         reportError: ba
     };
-    module/*e*/.exports = global/*a*/.ErrorUtils = ka;
-    if (typeof __t === 'function' && __t.setHandler) __t.setHandler(ba);
+    module.exports = global.ErrorUtils = ErrorUtils;
+    /*还不知道干嘛用的*/
+    if (typeof __t === 'function' && __t.setHandler) __t.setHandler(reportError);
 });

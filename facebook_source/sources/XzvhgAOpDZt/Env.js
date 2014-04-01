@@ -1,10 +1,11 @@
-__d("Env",["copyProperties"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, copyProperties/*g*/) {
-    var h = {
+/*支持全局环境配置*/
+__d("Env", ["copyProperties"], function (global, require, requireDynamic, requireLazy, module, exports, copyProperties) {
+    var Env = {
         start: Date.now()
     };
-    if (global/*a*/.Env) {
-        copyProperties/*g*/(h, global/*a*/.Env);
-        global/*a*/.Env = undefined;
+    if (global.Env) {
+        copyProperties(Env, global.Env);
+        global.Env = undefined;
     }
-    module/*e*/.exports = h;
+    module.exports = Env;
 });
