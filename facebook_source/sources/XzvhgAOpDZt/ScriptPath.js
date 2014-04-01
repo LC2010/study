@@ -1,4 +1,4 @@
-__d("ScriptPath", ["ErrorUtils"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , ErrorUtils /*g*/ ) {
+__d("ScriptPath",["ErrorUtils"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, ErrorUtils/*g*/) {
     var h = null,
         i = null,
         j = {}, k = 0,
@@ -16,7 +16,7 @@ __d("ScriptPath", ["ErrorUtils"], function(global /*a*/ , require /*b*/ , requir
 
     function o() {
         Object.keys(j).forEach(function(q) {
-            ErrorUtils /*g*/ .applyWithGuard(j[q], null, [{
+            ErrorUtils/*g*/.applyWithGuard(j[q], null, [{
                 source: h,
                 dest: i
             }]);
@@ -57,5 +57,5 @@ __d("ScriptPath", ["ErrorUtils"], function(global /*a*/ , require /*b*/ , requir
             n(q);
         }
     };
-    module /*e*/ .exports = p;
+    module/*e*/.exports = p;
 });

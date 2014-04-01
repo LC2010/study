@@ -1,25 +1,25 @@
-__d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager", "setTimeoutAcrossTransitions", "createArrayFrom", "ErrorUtils", "ex"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , BootloaderConfig /*g*/ , CSSLoader /*h*/ , CallbackDependencyManager /*i*/ , setTimeoutAcrossTransitions /*j*/ , createArrayFrom /*k*/ , ErrorUtils /*l*/ , ex /*m*/ ) {
+__d("Bootloader",["BootloaderConfig","CSSLoader","CallbackDependencyManager","setTimeoutAcrossTransitions","createArrayFrom","ErrorUtils","ex"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, BootloaderConfig/*g*/, CSSLoader/*h*/, CallbackDependencyManager/*i*/, setTimeoutAcrossTransitions/*j*/, createArrayFrom/*k*/, ErrorUtils/*l*/, ex/*m*/) {
     var n = {}, o = {}, p = {}, q = {}, r = null,
         s = {}, t = {}, u = {}, v = {}, w = {}, x = {}, y = false,
         z = [],
-        aa = new CallbackDependencyManager /*i*/ (),
+        aa = new CallbackDependencyManager/*i*/(),
         ba = Date.now();
-    ErrorUtils /*l*/ .addListener(function(ma) {
+    ErrorUtils/*l*/.addListener(function(ma) {
         ma.loadingUrls = Object.keys(t);
     }, true);
 
     function ca(ma) {
         var na = new Error(ma);
         na.guard = 'Bootloader';
-        ErrorUtils /*l*/ .reportError(na);
+        ErrorUtils/*l*/.reportError(na);
     }
 
     function da() {
-        return document.documentMode || +(/MSIE.(\requireLazy/ * d * /+)/.exec(navigator.userAgent) || [])[1];
+        return document.documentMode || +(/MSIE.(\requireLazy/*d*/+)/.exec(navigator.userAgent) || [])[1];
     }
 
     function ea() {
-        if (!BootloaderConfig /*g*/ .retry_on_timeout || !BootloaderConfig /*g*/ .is_not_mobile || da() || !BootloaderConfig /*g*/ .timeout || BootloaderConfig /*g*/ .timeout < 0) return false;
+        if (!BootloaderConfig/*g*/.retry_on_timeout || !BootloaderConfig/*g*/.is_not_mobile || da() || !BootloaderConfig/*g*/.timeout || BootloaderConfig/*g*/.timeout < 0) return false;
         return true;
     }
 
@@ -49,16 +49,16 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
         t[na] = Date.now();
         if (ma == 'js') {
             var ra = fa(na, oa, qa, pa);
-            if (ea()) q[na] = setTimeoutAcrossTransitions /*j*/ (function() {
+            if (ea()) q[na] = setTimeoutAcrossTransitions/*j*/(function() {
                 delete q[na];
                 if (r) {
                     if (ra.parentNode && ra.parentNode === r) r.removeChild(ra);
                     w[na] = Date.now();
                     fa(na, oa, qa, r);
                 }
-            }, BootloaderConfig /*g*/ .timeout);
-        } else if (ma == 'css') CSSLoader /*h*/ .loadStyleSheet(oa, na, pa, qa, function() {
-            ca(ex /*m*/ ('CSS timeout [%s] at %s', oa, na));
+            }, BootloaderConfig/*g*/.timeout);
+        } else if (ma == 'css') CSSLoader/*h*/.loadStyleSheet(oa, na, pa, qa, function() {
+            ca(ex/*m*/('CSS timeout [%s] at %s', oa, na));
             v[na] = true;
             qa();
         });
@@ -66,11 +66,11 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
 
     function ha(ma) {
         if (!s[ma]) {
-            ca(ex /*m*/ ('Missing unloading resource %s', ma));
+            ca(ex/*m*/('Missing unloading resource %s', ma));
             return;
         }
         if (s[ma].type == 'css') {
-            CSSLoader /*h*/ .unloadStyleSheet(ma);
+            CSSLoader/*h*/.unloadStyleSheet(ma);
             delete n[ma];
             aa.unsatisfyPersistentDependency(ma);
         }
@@ -81,11 +81,11 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
             z.push([ma, na]);
             return;
         }
-        ma = createArrayFrom /*k*/ (ma);
+        ma = createArrayFrom/*k*/(ma);
         var oa = [];
         for (var pa = 0; pa < ma.length; ++pa) {
             if (!ma[pa]) {
-                ca(ex /*m*/ ('Empty component!'));
+                ca(ex/*m*/('Empty component!'));
                 continue;
             }
             var qa = p[ma[pa]];
@@ -100,7 +100,7 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
     function ja(ma) {
         if (ma) {
             n[ma] = true;
-        } else ca(ex /*m*/ ('Making an empty resource (%s) as requested', typeof ma));
+        } else ca(ex/*m*/('Making an empty resource (%s) as requested', typeof ma));
     }
 
     function ka(ma) {
@@ -110,7 +110,7 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
             if (typeof ma[oa] == 'string') {
                 if (ma[oa] in s) {
                     na.push(s[ma[oa]]);
-                } else ca(ex /*m*/ ('Unable to resolve resource %s.', ma[oa]));
+                } else ca(ex/*m*/('Unable to resolve resource %s.', ma[oa]));
             } else na.push(ma[oa]);
         return na;
     }
@@ -131,41 +131,41 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
                         var ta = na[sa].name;
                         if (na[sa].permanent) o[ta] = true;
                         delete na[sa];
-                        CSSLoader /*h*/ .registerLoadedStyleSheet(ta, qa[pa]);
+                        CSSLoader/*h*/.registerLoadedStyleSheet(ta, qa[pa]);
                         la.done([ta]);
                         ra++;
                         break;
                     }
             }
-            if (ra != oa.length) ca(ex /*m*/ ('configurePage: Found %requireLazy/*d*/ out of %requireLazy/*d*/ items', ra, oa.length));
+            if (ra != oa.length) ca(ex/*m*/('configurePage: Found %requireLazy/*d*/ out of %requireLazy/*d*/ items', ra, oa.length));
         },
         loadComponents: function(ma, na) {
-            ma = createArrayFrom /*k*/ (ma);
+            ma = createArrayFrom/*k*/(ma);
             var oa = [];
             for (var pa = 0; pa < ma.length; pa++) {
                 var qa = p[ma[pa]],
                     ra = 'legacy:' + ma[pa];
                 if (p[ra]) {
-                    if (qa) ca(ex /*m*/ ('%s has global/*a*/ conflicting legacy component. That cannot happen ' + 'and legacy won btw.', ma[pa]));
+                    if (qa) ca(ex/*m*/('%s has global/*a*/ conflicting legacy component. That cannot happen ' + 'and legacy won btw.', ma[pa]));
                     ma[pa] = ra;
                     oa.push(ra);
                     continue;
                 }
                 if (!qa) {
-                    ca(ex /*m*/ ('loadComponents: %s is not in the component map.', ma[pa]));
+                    ca(ex/*m*/('loadComponents: %s is not in the component map.', ma[pa]));
                 } else if (qa.module) {
                     oa.push(ma[pa]);
-                    ca(ex /*m*/ ('loadComponents: Loading module %s!', ma[pa]));
+                    ca(ex/*m*/('loadComponents: Loading module %s!', ma[pa]));
                 }
             }
-            ia(ma, oa.length ? requireLazy /*d*/ .bind(null, oa, na) : na);
+            ia(ma, oa.length ? requireLazy/*d*/.bind(null, oa, na) : na);
         },
         loadModules: function(ma, na) {
             var oa = [];
             for (var pa = 0; pa < ma.length; pa++) {
                 var qa = p[ma[pa]];
                 if (!qa) {
-                    ca(ex /*m*/ ('loadModules: %s is not in the component map.', ma[pa]));
+                    ca(ex/*m*/('loadModules: %s is not in the component map.', ma[pa]));
                     oa.push(ma[pa]);
                 } else if (qa.module) {
                     oa.push(ma[pa]);
@@ -176,14 +176,14 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
                         var ua = s[ra[ta]];
                         if (!ua || ua.type != 'css') sa = false;
                     }
-                    if (!sa) ca(ex /*m*/ ('loadModules: %s is not global/*a*/ module!', ma[pa]));
+                    if (!sa) ca(ex/*m*/('loadModules: %s is not global/*a*/ module!', ma[pa]));
                 }
             }
-            ia(ma, requireLazy /*d*/ .bind(null, oa, na));
+            ia(ma, requireLazy/*d*/.bind(null, oa, na));
         },
         loadResources: function(ma, na, oa, pa) {
             var qa;
-            ma = ka(createArrayFrom /*k*/ (ma));
+            ma = ka(createArrayFrom/*k*/(ma));
             if (oa) {
                 var ra = {};
                 for (qa = 0; qa < ma.length; ++qa) ra[ma[qa].name] = true;
@@ -295,5 +295,5 @@ __d("Bootloader", ["BootloaderConfig", "CSSLoader", "CallbackDependencyManager",
             return Object.keys(w);
         }
     };
-    module /*e*/ .exports = la;
+    module/*e*/.exports = la;
 });

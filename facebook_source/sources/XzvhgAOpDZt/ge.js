@@ -1,4 +1,4 @@
-__d("ge", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("ge",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
     function g(j, k, l) {
         return typeof j != 'string' ? j : !k ? document.getElementById(j) : h(j, k, l);
     }
@@ -24,5 +24,5 @@ __d("ge", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , req
     function i(j) {
         return j.getAttribute ? j.getAttribute('id') : null;
     }
-    module /*e*/ .exports = g;
+    module/*e*/.exports = g;
 });

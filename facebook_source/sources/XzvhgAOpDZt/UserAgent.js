@@ -1,4 +1,4 @@
-__d("UserAgent", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("UserAgent",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
     var g = false,
         h, i, j, k, l, m, n, o, p, q, r, s, t, u, v;
 
@@ -6,10 +6,10 @@ __d("UserAgent", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*
         if (g) return;
         g = true;
         var y = navigator.userAgent,
-            z = /(?:MSIE.(\requireLazy/ * d * /+\.\requireLazy/ * d * /+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\requireLazy/ * d * /+\.\requireLazy/ * d * /+))|(?:Opera(?:.+Version.|.)(\requireLazy/ * d * /+\.\requireLazy/ * d * /+))|(?:AppleWebKit.(\requireLazy/ * d * /+(?:\.\requireLazy/ * d * /+)?))|(?:Trident\/\requireLazy/ * d * /+\.\requireLazy/ * d * /+.*rv:(\requireLazy/ * d * /+\.\requireLazy/ * d * /+))/.exec(y),
+            z = /(?:MSIE.(\requireLazy/*d*/+\.\requireLazy/*d*/+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\requireLazy/*d*/+\.\requireLazy/*d*/+))|(?:Opera(?:.+Version.|.)(\requireLazy/*d*/+\.\requireLazy/*d*/+))|(?:AppleWebKit.(\requireLazy/*d*/+(?:\.\requireLazy/*d*/+)?))|(?:Trident\/\requireLazy/*d*/+\.\requireLazy/*d*/+.*rv:(\requireLazy/*d*/+\.\requireLazy/*d*/+))/.exec(y),
             aa = /(Mac OS X)|(Windows)|(Linux)/.exec(y);
-        s = /\require/ * b * /(iPhone|iP[ao]requireLazy/ * d * /)/.exec(y);
-        t = /\require/ * b * /(iP[ao]requireLazy/ * d * /)/.exec(y);
+        s = /\require/*b*/(iPhone|iP[ao]requireLazy/*d*/)/.exec(y);
+        t = /\require/*b*/(iP[ao]requireLazy/*d*/)/.exec(y);
         q = /Android/i.exec(y);
         u = /FBAN\/\w+;/i.exec(y);
         v = /Mobile/i.exec(y);
@@ -17,18 +17,18 @@ __d("UserAgent", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*
         if (z) {
             h = z[1] ? parseFloat(z[1]) : (z[5] ? parseFloat(z[5]) : NaN);
             if (h && document && document.documentMode) h = document.documentMode;
-            var ba = /(?:Trident\/(\requireLazy/ * d * /+.\requireLazy/ * d * /+))/.exec(y);
+            var ba = /(?:Trident\/(\requireLazy/*d*/+.\requireLazy/*d*/+))/.exec(y);
             m = ba ? parseFloat(ba[1]) + 4 : h;
             i = z[2] ? parseFloat(z[2]) : NaN;
             j = z[3] ? parseFloat(z[3]) : NaN;
             k = z[4] ? parseFloat(z[4]) : NaN;
             if (k) {
-                z = /(?:Chrome\/(\requireLazy/ * d * /+\.\requireLazy/ * d * /+))/.exec(y);
+                z = /(?:Chrome\/(\requireLazy/*d*/+\.\requireLazy/*d*/+))/.exec(y);
                 l = z && z[1] ? parseFloat(z[1]) : NaN;
             } else l = NaN;
         } else h = i = j = l = k = NaN; if (aa) {
             if (aa[1]) {
-                var ca = /(?:Mac OS X (\requireLazy/ * d * /+(?:[._]\requireLazy/ * d * /+)?))/.exec(y);
+                var ca = /(?:Mac OS X (\requireLazy/*d*/+(?:[._]\requireLazy/*d*/+)?))/.exec(y);
                 n = ca ? parseFloat(ca[1].replace('_', '.')) : true;
             } else n = false;
             o = !! aa[2];
@@ -85,5 +85,5 @@ __d("UserAgent", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*
             return w() || t;
         }
     };
-    module /*e*/ .exports = x;
+    module/*e*/.exports = x;
 });

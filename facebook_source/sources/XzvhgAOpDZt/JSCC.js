@@ -1,4 +1,4 @@
-__d("JSCC", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("JSCC",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
     var g = {};
 
     function h(j) {
@@ -23,5 +23,5 @@ __d("JSCC", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , r
             };
         }
     };
-    module /*e*/ .exports = i;
+    module/*e*/.exports = i;
 });

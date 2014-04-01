@@ -1,4 +1,4 @@
-__d("EventSubscriptionVendor", ["invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
+__d("EventSubscriptionVendor",["invariant"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, invariant/*g*/) {
     'use strict';
 
     function h() {
@@ -6,7 +6,7 @@ __d("EventSubscriptionVendor", ["invariant"], function(global /*a*/ , require /*
         this.$EventSubscriptionVendor1 = null;
     }
     h.prototype.addSubscription = function(i, j) {
-        invariant /*g*/ (j.subscriber === this);
+        invariant/*g*/(j.subscriber === this);
         if (!this.$EventSubscriptionVendor0[i]) this.$EventSubscriptionVendor0[i] = [];
         var k = this.$EventSubscriptionVendor0[i].length;
         this.$EventSubscriptionVendor0[i].push(j);
@@ -28,5 +28,5 @@ __d("EventSubscriptionVendor", ["invariant"], function(global /*a*/ , require /*
     h.prototype.getSubscriptionsForType = function(i) {
         return this.$EventSubscriptionVendor0[i];
     };
-    module /*e*/ .exports = h;
+    module/*e*/.exports = h;
 });
