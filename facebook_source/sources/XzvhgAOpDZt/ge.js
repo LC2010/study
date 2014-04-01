@@ -1,0 +1,28 @@
+__d("ge", []function(global, require, requireDynamic, requireLazy, module, exports) {
+    function g(j, k, l) {
+        return typeof j != 'string' ? j : !k ? document.getElementById(j) : h(j, k, l);
+    }
+
+    function h(j, k, l) {
+        var m, n, o;
+        if (i(k) == j) {
+            return k;
+        } else if (k.getElementsByTagName) {
+            n = k.getElementsByTagName(l || '*');
+            for (o = 0; o < n.length; o++)
+                if (i(n[o]) == j) return n[o];
+        } else {
+            n = k.childNodes;
+            for (o = 0; o < n.length; o++) {
+                m = h(j, n[o]);
+                if (m) return m;
+            }
+        }
+        return null;
+    }
+
+    function i(j) {
+        return j.getAttribute ? j.getAttribute('id') : null;
+    }
+    module.exports = g;
+});
