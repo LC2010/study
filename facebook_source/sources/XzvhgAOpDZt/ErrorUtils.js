@@ -1,24 +1,25 @@
-__d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Env /*g*/ , eprintf /*h*/ , erx /*i*/ , wrapFunction /*j*/ ) {
-    var k = {}, l = '<anonymous guard>',
-        m = '<generated guard>',
-        n = '<window.onerror>',
-        o = /^https?:\/\//erx /*i*/ ,
+__d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*a*/, require /*b*/, requireDynamic /*c*/, requireLazy /*d*/, module /*e*/, exports /*f*/, Env /*g*/, eprintf /*h*/, erx /*i*/, wrapFunction /*j*/) {
+    var k = {},
+        ANONYMOUS_GUARD_TAG = '<anonymous guard>',
+        GENERATED_GUARD_TAG = '<generated guard>',
+        GLOBAL_ERROR_HANDLER_TAG = '<window.onerror>',
+        o = /^https?:\/\//i,
         p = /^Type Mismatch for/,
         q = ['Unknown script code', 'Function code', 'eval code'],
         r = new RegExp('(.*?)(\\s)(?:' + q.join('|') + ')$'),
-        s = [],
-        t, u = [],
-        v = 50,
-        w = [],
-        x = false,
-        y = false;
+        listeners = [],
+        resolver, history = [],
+        maxLen = 50,
+        guardList = [],
+        isInGuard = false,
+        errReporting = false;
 
-    function z(la) {
-        if (!la) return [];
-        var ma = la.split(/\n\n/)[0].replace(/[\(\)]|\[.*?\]|^\w+:\s.*?\n/Env /*g*/ , '').split('\n').map(function(na) {
+    function getStackFrames(stack) {
+        if (!stack) return [];
+        var stackFrames = stack.split(/\n\n/)[0].replace(/[\(\)]|\[.*?\]|^\w+:\s.*?\n/g, '').split('\n').map(function (na) {
             var oa, pa, qa;
             na = na.trim();
-            if (/(:(\requireLazy/ * d * /+)(:(\requireLazy/ * d * /+))?)$/.test(na)) {
+            if (/(:(\d+)(:(\d+))?)$/.test(na)) {
                 pa = RegExp.$2;
                 qa = RegExp.$4;
                 na = na.slice(0, -RegExp.$1.length);
@@ -33,174 +34,182 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function(global /*a
                 line: pa,
                 column: qa
             };
-            if (t) t(ra);
+            if (resolver)
+                resolver(ra);
             ra.text = '    at' + (ra.identifier ? ' ' + ra.identifier + ' (' : ' ') + ra.script + (ra.line ? ':' + ra.line : '') + (ra.column ? ':' + ra.column : '') + (ra.identifier ? ')' : '');
             return ra;
         });
-        return ma;
+        return stackFrames;
     }
 
-    function aa(la) {
-        if (!la) {
+    function normalizeError(errObj) {
+        if (!errObj) {
             return {};
-        } else if (la._originalError) return la;
-        var ma = z(la.stackTrace || la.stack),
-            na = false;
-        if (la.framesToPop) {
-            var oa = la.framesToPop,
-                pa;
-            while (oa > 0 && ma.length > 0) {
-                pa = ma.shift();
-                oa--;
-                na = true;
+        } else if (errObj._originalError) return errObj;
+        var stackFrames = getStackFrames(errObj.stackTrace || errObj.stack),
+            needPop = false;
+        if (errObj.framesToPop) {
+            var popFrames = errObj.framesToPop,
+                stack;
+            while (popFrames > 0 && stackFrames.length > 0) {
+                stack = stackFrames.shift();
+                popFrames--;
+                needPop = true;
             }
-            if (p.test(la.message) && la.framesToPop === 2 && pa)
-                if (o.test(pa.script)) la.message += ' at ' + pa.script + (pa.line ? ':' + pa.line : '') + (pa.column ? ':' + pa.column : '');
-            delete la.framesToPop;
+            if (msgReg.test(errObj.message) && errObj.framesToPop === 2 && stack)
+                if (scriptReg.test(stack.script)) errObj.message += ' at ' + stack.script + (stack.line ? ':' + stack.line : '') + (stack.column ? ':' + stack.column : '');
+            delete errObj.framesToPop;
         }
-        var qa = {
-            line: la.lineNumber || la.line,
-            column: la.columnNumber || la.column,
-            name: la.name,
-            message: la.message,
-            messageWithParams: la.messageWithParams,
-            type: la.type,
-            script: la.fileName || la.sourceURL || la.script,
-            stack: ma.map(function(sa) {
-                return sa.text;
+        var error = {
+            line: errObj.lineNumber || errObj.line,
+            column: errObj.columnNumber || errObj.column,
+            name: errObj.name,
+            message: errObj.message,
+            type: errObj.type,
+            script: errObj.fileName || errObj.sourceURL || errObj.script,
+            stack: stackFrames.map(function (stack) {
+                return stack.text;
             }).join('\n'),
-            stackFrames: ma,
-            guard: la.guard,
-            guardList: la.guardList,
-            extra: la.extra,
-            snapshot: la.snapshot
+            stackFrames: stackFrames,
+            guard: errObj.guard,
+            guardList: errObj.guardList,
+            extra: errObj.extra,
+            snapshot: errObj.snapshot
         };
-        if (typeof qa.message === 'string' && !qa.messageWithParams) {
-            qa.messageWithParams = erx /*i*/ (qa.message);
-            qa.message = eprintf /*h*/ .apply(global /*a*/ , qa.messageWithParams);
+        if (typeof error.message === 'string') {
+            error.messageWithParams = erx(error.message);
+            error.message = eprintf.apply(global, error.messageWithParams);
         } else {
-            qa.messageObject = qa.message;
-            qa.message = String(qa.message);
-        } if (t) t(qa);
-        if (na) {
-            delete qa.script;
-            delete qa.line;
-            delete qa.column;
+            error.messageObject = error.message;
+            error.message = String(error.message);
         }
-        if (ma[0]) {
-            qa.script = qa.script || ma[0].script;
-            qa.line = qa.line || ma[0].line;
-            qa.column = qa.column || ma[0].column;
+        if (resolver)
+            resolver(error);
+        if (needPop) {
+            delete error.script;
+            delete error.line;
+            delete error.column;
         }
-        qa._originalError = la;
-        for (var ra in qa)(qa[ra] == null && delete qa[ra]);
-        return qa;
+        if (stackFrames[0]) {
+            error.script = error.script || stackFrames[0].script;
+            error.line = error.line || stackFrames[0].line;
+            error.column = error.column || stackFrames[0].column;
+        }
+        error._originalError = errObj;
+        for (var key in error) (error[key] == null && delete error[key]);
+        return error;
     }
 
-    function ba(la, ma) {
-        if (y) return false;
-        if (w.length > 0) {
-            la.guard = la.guard || w[0];
-            la.guardList = w.slice();
+    function reportError(errObj) {
+        if (errReporting) return false;
+        if (guardList.length > 0) {
+            errObj.guard = errObj.guard || guardList[0];
+            errObj.guardList = guardList.slice();
         }
-        la = aa(la);
-        !ma;
-        if (u.length > v) u.splice(v / 2, 1);
-        u.push(la);
-        y = true;
-        for (var na = 0; na < s.length; na++) try {
-            s[na](la);
-        } catch (oa) {}
-        y = false;
+        errObj = normalizeError(errObj);
+        // !ma; 不明觉厉
+        if (history.length > maxLen)
+            history.splice(maxLen / 2, 1);
+        history.push(errObj);
+        errReporting = true;
+        for (var i = 0; i < listeners.length; i++) try {
+            listeners[i](errObj);
+        } catch (e) { }
+        errReporting = false;
         return true;
     }
 
-    function ca() {
-        return x;
+    function inGuard() {
+        return isInGuard;
     }
 
-    function da(la) {
-        w.unshift(la);
-        x = true;
+    function addGuard(tag) {
+        guardList.unshift(tag);
+        isInGuard = true;
     }
 
-    function ea() {
-        w.shift();
-        x = (w.length !== 0);
+    function removeGuard() {
+        guardList.shift();
+        isInGuard = (guardList.length !== 0);
     }
 
-    function fa(la, ma, na, oa, pa) {
-        da(pa || l);
-        var qa, ra = k.nocatch || (/nocatch/).test(location.search);
-        if (!ra && Env /*g*/ .nocatch) ra = Env /*g*/ .nocatch;
+    function applyWithGuard(fn, context, args, oa, tag) {
+        addGuard(tag || ANONYMOUS_GUARD_TAG);
+        var qa, ra = g.nocatch || (/nocatch/).test(location.search);
+        if (!ra && Env.nocatch)
+            ra = Env.nocatch;
         if (ra) {
             try {
-                qa = la.apply(ma, na || []);
+                qa = fn.apply(context, args || []);
             } finally {
-                ea();
+                removeGuard();
             }
             return qa;
         }
         try {
-            qa = la.apply(ma, na || []);
+            qa = fn.apply(context, args || []);
             return qa;
         } catch (sa) {
-            var ta = aa(sa);
-            if (oa) oa(ta);
-            if (la) ta.callee = la.toString().substring(0, 100);
-            if (na) ta.args = Array.prototype.slice.call(na).toString().substring(0, 100);
-            ta.guard = w[0];
-            ta.guardList = w.slice();
-            ba(ta);
+            var ta = normalizeError(sa);
+            if (oa)
+                oa(ta);
+            if (fn)
+                ta.callee = fn.toString().substring(0, 100);
+            if (na)
+                ta.args = Array.prototype.slice.call(args).toString().substring(0, 100);
+            ta.guard = guardList[0];
+            ta.guardList = guardList.slice();
+            reportError(ta);
         } finally {
-            ea();
+            removeGuard();
         }
     }
 
-    function ga(la, ma, na) {
-        ma = ma || la.name || m;
+    function guard(fn, args, context) {
+        args = args || fn.name || GENERATED_GUARD_TAG;
 
-        function oa() {
-            return fa(la, na || this, arguments, null, ma);
+        function guardFn() {
+            return applyWithGuard(fn, context || this, arguments, null, args);
         }
-        return oa;
+        return guardFn;
     }
-    wrapFunction /*j*/ .setWrapper(ga, 'entry');
+    wrapFunction.setWrapper(guard, 'entry');
 
-    function ha(la, ma, na, oa, pa) {
-        pa = pa || {};
-        pa.message = pa.message || la;
-        pa.script = pa.script || ma;
-        pa.line = pa.line || na;
-        pa.column = pa.column || oa;
-        pa.guard = n;
-        pa.guardList = [n];
-        ba(pa, true);
+    function onerror(errMsg, script, line, column, errObj) {
+        errObj = errObj || {};
+        errObj.message = errObj.message || errMsg;
+        errObj.script = errObj.script || script;
+        errObj.line = errObj.line || line;
+        errObj.column = errObj.column || column;
+        errObj.guard = GLOBAL_ERROR_HANDLER_TAG;
+        errObj.guardList = [GLOBAL_ERROR_HANDLER_TAG];
+        reportError(errObj);
     }
-    window.onerror = ha;
+    window.onerror = onerror;
 
-    function ia(la, ma) {
-        s.push(la);
-        if (!ma) u.forEach(la);
+    function addListener(listener, nohistory) {
+        listeners.push(listener);
+        if (!nohistory) history.forEach(listener);
     }
 
-    function ja(la) {
-        t = la;
+    function setSourceResolver(callback) {
+        resolver = callback;
     }
-    var ka = {
-        ANONYMOUS_GUARD_TAG: l,
-        GENERATED_GUARD_TAG: m,
-        GLOBAL_ERROR_HANDLER_TAG: n,
-        addListener: ia,
-        setSourceResolver: ja,
-        applyWithGuard: fa,
-        guard: ga,
-        history: u,
-        inGuard: ca,
-        normalizeError: aa,
-        onerror: ha,
-        reportError: ba
+    var ErrorUtils = {
+        ANONYMOUS_GUARD_TAG: ANONYMOUS_GUARD_TAG,
+        GENERATED_GUARD_TAG: GENERATED_GUARD_TAG,
+        GLOBAL_ERROR_HANDLER_TAG: GLOBAL_ERROR_HANDLER_TAG,
+        addListener: addListener,
+        setSourceResolver: setSourceResolver,
+        applyWithGuard: applyWithGuard,
+        guard: guard,
+        history: history,
+        inGuard: inGuard,
+        normalizeError: normalizeError,
+        onerror: onerror,
+        reportError: reportError
     };
-    module /*e*/ .exports = global /*a*/ .ErrorUtils = ka;
-    if (typeof __t === 'function' && __t.setHandler) __t.setHandler(ba);
+    module.exports = global.ErrorUtils = ErrorUtils;
+    /*还不知道干嘛用的*/
+    //if (typeof __t === 'function' && __t.setHandler) __t.setHandler(reportError);
 });
