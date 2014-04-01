@@ -107,7 +107,7 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*
             errObj.guardList = guardList.slice();
         }
         errObj = normalizeError(errObj);
-        // !ma; 不明觉厉
+        !ma; //不明觉厉
         if (history.length > maxLen)
             history.splice(maxLen / 2, 1);
         history.push(errObj);
@@ -183,7 +183,7 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*
         errObj.column = errObj.column || column;
         errObj.guard = GLOBAL_ERROR_HANDLER_TAG;
         errObj.guardList = [GLOBAL_ERROR_HANDLER_TAG];
-        reportError(errObj);
+        reportError(errObj, true);
     }
     window.onerror = onerror;
 
@@ -211,5 +211,5 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*
     };
     module.exports = global.ErrorUtils = ErrorUtils;
     /*还不知道干嘛用的*/
-    //if (typeof __t === 'function' && __t.setHandler) __t.setHandler(reportError);
+    if (typeof __t === 'function' && __t.setHandler) __t.setHandler(reportError);
 });

@@ -1,3 +1,4 @@
+/*属性继承，支持多重继承*/
 __d("copyProperties", [], function (global, require, requireDynamic, requireLazy, module, exports) {
     //支持多重继承，这里感觉facebook代码不够优雅~
     function copyProperties(target, source0, source1, source2, source3, source4, source5) {
