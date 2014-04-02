@@ -1,13 +1,19 @@
-__d("ex",["eprintf"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, eprintf/*g*/) {
-    var h = function() {
-        var i = Array.prototype.slice.call(arguments, 0);
-        i = i.map(function(j) {
-            return String(j);
+/*字符串增加前后缀*/
+__d("ex",["eprintf"],function (global, require, requireDynamic, requireLazy, module, exports, eprintf) {
+    /*
+      为字符串增加前后缀<![EX[str]]>
+      return {String}
+    */
+    var ex = function() {
+        var strArgs = Array.prototype.slice.call(arguments, 0);
+        strArgs = strArgs.map(function(arg) {
+            return String(arg);
         });
-        if (i[0].split('%s').length !== i.length) return h('ex args number mismatch: %s', JSON.stringify(i));
-        return h._prefix + JSON.stringify(i) + h._suffix;
+        if (strArgs[0].split('%s').length !== strArgs.length) 
+            return ex('ex args number mismatch: %s', JSON.stringify(strArgs));
+        return ex._prefix + JSON.stringify(strArgs) + ex._suffix;
     };
-    h._prefix = '<![EX[';
-    h._suffix = ']]>';
-    module/*e*/.exports = h;
+    ex._prefix = '<![EX[';
+    ex._suffix = ']]>';
+    module.exports = ex;
 });

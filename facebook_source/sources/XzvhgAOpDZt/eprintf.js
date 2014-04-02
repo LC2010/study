@@ -4,6 +4,7 @@ __d("eprintf", [], function (global, require, requireDynamic, requireLazy, modul
     /*
     * 一种字符串格式化函数，支持%s替换字符，如epritf("hello %s","world") 返回hello world;
     * @param str {String} 需要格式化的字符串
+    * retrun {String} 格式化后的字符串
     */
     var eprintf = function (str) {
         var strArgs = Array.prototype.slice.call(arguments).map(function (arg) {

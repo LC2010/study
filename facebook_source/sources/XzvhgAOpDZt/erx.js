@@ -1,23 +1,33 @@
-__d("erx",["ex"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, ex/*g*/) {
-    var h = function(i) {
-        if (typeof i !== 'string') return i;
-        var j = i.indexOf(ex/*g*/._prefix),
-            k = i.lastIndexOf(ex/*g*/._suffix);
-        if (j < 0 || k < 0) return [i];
-        var l = j + ex/*g*/._prefix.length,
-            m = k + ex/*g*/._suffix.length;
-        if (l >= k) return ['erx slice failure: %s', i];
-        var n = i.substring(0, j),
-            o = i.substring(m);
-        i = i.substring(l, k);
-        var p;
+/*格式化字符串*/
+__d("erx", ["ex"], function (global, require, requireDynamic, requireLazy, module, exports, ex) {
+    /*
+       格式化字符串，例如aa<![EX[xxxx]]>bb 转换成 [aaxxxxbb]返回
+       @param {String} 需要格式的字符串
+       return {Array} 格式化后的字符串
+    */
+    
+    var erx = function (str) {
+        if (typeof str !== 'string') 
+            return str;
+        var prefixStart = str.indexOf(ex._prefix),
+            suffixStart = str.lastIndexOf(ex._suffix);
+        if (prefixStart < 0 || suffixStart < 0)
+            return [str];
+        var prefixEnd = prefixStart + ex._prefix.length,
+            suffixEnd = suffixStart + ex._suffix.length;
+        if (prefixEnd >= suffixStart)
+            return ['erx slice failure: %s', str];
+        var beforePrefix = str.substring(0, prefixStart),
+            afterSuffix = str.substring(suffixEnd);
+        str = str.substring(prefixEnd, suffixStart);
+        var ret;
         try {
-            p = JSON.parse(i);
-            p[0] = n + p[0] + o;
-        } catch (q) {
-            return ['erx parse failure: %s', i];
+            ret = JSON.parse(str);
+            ret[0] = beforePrefix + ret[0] + afterSuffix;
+        } catch (e) {
+            return ['erx parse failure: %s', str];
         }
-        return p;
+        return ret;
     };
-    module/*e*/.exports = h;
+    module.exports = erx;
 });

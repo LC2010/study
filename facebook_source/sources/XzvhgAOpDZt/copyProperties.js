@@ -9,6 +9,7 @@ __d("copyProperties", [], function (global, require, requireDynamic, requireLazy
     * @param source3 {Object} 源对象3
     * @param source4 {Object} 源对象4
     * @param source5 {Object} 源对象5
+    * retrun {Object} 继承后的目标对象
     */
     function copyProperties(target, source0, source1, source2, source3, source4, source5) {
         target = target || {};
