@@ -21,15 +21,23 @@ function __d(name, deps, factory) {
 }
 
 console.log("NODE:=node");
-console.log("MODULES:=" + modules.join(" "));
+console.log("#BEAUTIFY:=cat");
+console.log("BEAUTIFY:=js-beautify --type \"javascript\" -f");
+console.log("MODULES:=" + modules.join(" ").replace("$", "$$$$"));
 console.log("output:=$(addsuffix .js, $(MODULES))");
+//console.log("min_files:=$(addsuffix .min, $(MODULES))");
 console.log("");
 console.log("all:$(output)");
-console.log("\t@for i in *.js;do \\");
-console.log("\t     js-beautify --type \"javascript\" -r -f \"$$i\";\\");
-console.log("\tdone;");
 console.log("");
-console.log("$(output):../../" + inputFile);
-console.log("\t$(NODE) \"../../unrar.js\" \"$<\"");
+console.log("%.js:%.min");
+console.log("\t@$(BEAUTIFY) \'$<\' -o \'$@\'");
+console.log("\t@echo \"replace var name\" \"$@\"");
+console.log("\t@$(NODE) \"../../var.js\" \'$@\'");
+console.log("");
+//console.log("$(min_files):../../" + inputFile);
+//console.log("%.min:../../" + inputFile + " ../../unpack.js");
+console.log("%.min:");
+console.log("\t$(NODE) \"../../unpack.js\" \"../../" + inputFile + "\"");
 console.log("");
 console.log(".PHONY:all");
+//console.log(".INTERMEDIATE:$(min_files)");

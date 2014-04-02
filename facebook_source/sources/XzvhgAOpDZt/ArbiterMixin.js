@@ -1,7 +1,7 @@
-__d("ArbiterMixin", ["Arbiter"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ ) {
+__d("ArbiterMixin",["Arbiter"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, Arbiter/*g*/) {
     var h = {
         _getArbiterInstance: function() {
-            return this._arbiter || (this._arbiter = new Arbiter /*g*/ ());
+            return this._arbiter || (this._arbiter = new Arbiter/*g*/());
         },
         inform: function(i, j, k) {
             return this._getArbiterInstance().inform(i, j, k);
@@ -22,5 +22,5 @@ __d("ArbiterMixin", ["Arbiter"], function(global /*a*/ , require /*b*/ , require
             return this._getArbiterInstance().query(i);
         }
     };
-    module /*e*/ .exports = h;
+    module/*e*/.exports = h;
 });

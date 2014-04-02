@@ -1,10 +1,10 @@
-__d("BitMap", ["copyProperties", "repeatString"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , copyProperties /*g*/ , repeatString /*h*/ ) {
+__d("BitMap",["copyProperties","repeatString"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, copyProperties/*g*/, repeatString/*h*/) {
     var i = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
 
     function j() {
         this._bits = [];
     }
-    copyProperties /*g*/ (j.prototype, {
+    copyProperties/*g*/(j.prototype, {
         set: function(m) {
             this._bits[m] = 1;
             return this;
@@ -37,15 +37,15 @@ __d("BitMap", ["copyProperties", "repeatString"], function(global /*a*/ , requir
 
     function k(m) {
         var n = m.toString(2),
-            o = repeatString /*h*/ ('0', n.length - 1);
+            o = repeatString/*h*/('0', n.length - 1);
         return o + n;
     }
 
     function l(m) {
-        var n = (m + '00000').match(/[01]{6}/copyProperties /*g*/ ),
+        var n = (m + '00000').match(/[01]{6}/copyProperties/*g*/),
             o = '';
         for (var p = 0; p < n.length; p++) o += i[parseInt(n[p], 2)];
         return o;
     }
-    module /*e*/ .exports = j;
+    module/*e*/.exports = j;
 });

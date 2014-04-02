@@ -1,4 +1,4 @@
-__d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , URIRFC3986 /*g*/ , URISchemes /*h*/ , copyProperties /*i*/ , ex /*j*/ , invariant /*k*/ ) {
+__d("URIBase",["URIRFC3986","URISchemes","copyProperties","ex","invariant"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, URIRFC3986/*g*/, URISchemes/*h*/, copyProperties/*i*/, ex/*j*/, invariant/*k*/) {
     var l = new RegExp('[\\x00-\\x2c\\x2f\\x3b-\\x40\\x5c\\x5e\\x60\\x7b-\\x7f' + '\\uFDD0-\\uFDEF\\uFFF0-\\uFFFF' + '\\u2047\\u2048\\uFE56\\uFE5F\\uFF03\\uFF0F\\uFF1F]'),
         m = new RegExp('^(?:[^/]*:|' + '[\\x00-\\x1f]*/[\\x00-\\x1f]*/)');
 
@@ -14,8 +14,8 @@ __d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]
             return true;
         }
         q = q.toString();
-        var t = URIRFC3986 /*g*/ .parse(q) || {};
-        if (!r && !URISchemes /*h*/ .isAllowed(t.scheme)) return false;
+        var t = URIRFC3986/*g*/.parse(q) || {};
+        if (!r && !URISchemes/*h*/.isAllowed(t.scheme)) return false;
         p.setProtocol(t.scheme || '');
         if (!r && l.test(t.host)) return false;
         p.setDomain(t.host || '');
@@ -31,22 +31,22 @@ __d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]
         p.setFragment(t.fragment || '');
         if (t.userinfo !== null)
             if (r) {
-                throw new Error(ex /*j*/ ('URI.parse: invalid URI (userinfo is not allowed in global/*a*/ URI): %s', p.toString()));
+                throw new Error(ex/*j*/('URI.parse: invalid URI (userinfo is not allowed in global/*a*/ URI): %s', p.toString()));
             } else return false;
         if (!p.getDomain() && p.getPath().indexOf('\\') !== -1)
             if (r) {
-                throw new Error(ex /*j*/ ('URI.parse: invalid URI (no domain but multiple back-slashes): %s', p.toString()));
+                throw new Error(ex/*j*/('URI.parse: invalid URI (no domain but multiple back-slashes): %s', p.toString()));
             } else return false;
         if (!p.getProtocol() && m.test(q))
             if (r) {
-                throw new Error(ex /*j*/ ('URI.parse: invalid URI (unsafe protocol-relative URLs): %s', p.toString()));
+                throw new Error(ex/*j*/('URI.parse: invalid URI (unsafe protocol-relative URLs): %s', p.toString()));
             } else return false;
         return true;
     }
 
     function o(p, q) {
         "use strict";
-        invariant /*k*/ (q);
+        invariant/*k*/(q);
         this.$URIBase0 = q;
         this.$URIBase1 = '';
         this.$URIBase2 = '';
@@ -58,7 +58,7 @@ __d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]
     }
     o.prototype.setProtocol = function(p) {
         "use strict";
-        invariant /*k*/ (URISchemes /*h*/ .isAllowed(p));
+        invariant/*k*/(URISchemes/*h*/.isAllowed(p));
         this.$URIBase1 = p;
         return this;
     };
@@ -76,7 +76,7 @@ __d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]
     };
     o.prototype.setDomain = function(p) {
         "use strict";
-        if (l.test(p)) throw new Error(ex /*j*/ ('URI.setDomain: unsafe domain specified: %s for url %s', p, this.toString()));
+        if (l.test(p)) throw new Error(ex/*j*/('URI.setDomain: unsafe domain specified: %s for url %s', p, this.toString()));
         this.$URIBase2 = p;
         return this;
     };
@@ -105,7 +105,7 @@ __d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]
     o.prototype.addQueryData = function(p, q) {
         "use strict";
         if (p instanceof Object) {
-            copyProperties /*i*/ (this.$URIBase6, p);
+            copyProperties/*i*/(this.$URIBase6, p);
         } else this.$URIBase6[p] = q;
         return this;
     };
@@ -158,5 +158,5 @@ __d("URIBase", ["URIRFC3986", "URISchemes", "copyProperties", "ex", "invariant"]
     o.isValidURI = function(p, q) {
         return n(new o(null, q), p, false, q);
     };
-    module /*e*/ .exports = o;
+    module/*e*/.exports = o;
 });

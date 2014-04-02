@@ -1,4 +1,4 @@
-__d("userAction", ["Arbiter", "Banzai", "copyProperties"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , Arbiter /*g*/ , Banzai /*h*/ , copyProperties /*i*/ ) {
+__d("userAction",["Arbiter","Banzai","copyProperties"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, Arbiter/*g*/, Banzai/*h*/, copyProperties/*i*/) {
     var j = 50,
         k = [],
         l = {}, m = {};
@@ -7,7 +7,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"], function(global /*a*/
         "use strict";
         var z = v + '/' + w,
             aa = u(y);
-        copyProperties /*i*/ (this, {
+        copyProperties/*i*/(this, {
             ue: z,
             _uai_logged: false,
             _uai_timeout: null,
@@ -34,7 +34,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"], function(global /*a*/
             z = o(v, this._ns, 'action', this._get_action_type()),
             aa = (y !== undefined || z !== undefined),
             ba = aa ? (y || z) : x;
-        if (Banzai /*h*/ .isEnabled('useraction') && ba) Banzai /*h*/ .post(v, w, p);
+        if (Banzai/*h*/.isEnabled('useraction') && ba) Banzai/*h*/.post(v, w, p);
     };
     n.prototype._get_action_type = function() {
         "use strict";
@@ -132,7 +132,7 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"], function(global /*a*/
         s = w;
         k.push(z);
         while (k.length > 10) k.shift();
-        Arbiter /*g*/ .inform("UserAction/new", {
+        Arbiter/*g*/.inform("UserAction/new", {
             ua: z,
             node: w,
             mode: x.mode,
@@ -148,13 +148,13 @@ __d("userAction", ["Arbiter", "Banzai", "copyProperties"], function(global /*a*/
         return v.nodeName.toLowerCase();
     }
     t.setUATypeConfig = function(v) {
-        copyProperties /*i*/ (l, v);
+        copyProperties/*i*/(l, v);
     };
     t.setCustomSampleConfig = function(v) {
-        copyProperties /*i*/ (m, v);
+        copyProperties/*i*/(m, v);
     };
     t.getCurrentUECount = function() {
         return q;
     };
-    module /*e*/ .exports = global /*a*/ .userAction = t;
+    module/*e*/.exports = global/*a*/.userAction = t;
 });

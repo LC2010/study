@@ -1,7 +1,7 @@
-__d("repeatString", ["invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
+__d("repeatString",["invariant"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, invariant/*g*/) {
     function h(i, j) {
         if (j === 1) return i;
-        invariant /*g*/ (j >= 0);
+        invariant/*g*/(j >= 0);
         var k = '';
         while (j) {
             if (j & 1) k += i;
@@ -9,5 +9,5 @@ __d("repeatString", ["invariant"], function(global /*a*/ , require /*b*/ , requi
         }
         return k;
     }
-    module /*e*/ .exports = h;
+    module/*e*/.exports = h;
 });

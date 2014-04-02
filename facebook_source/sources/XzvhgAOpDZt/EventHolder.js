@@ -1,4 +1,4 @@
-__d("EventHolder", ["invariant"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , invariant /*g*/ ) {
+__d("EventHolder",["invariant"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, invariant/*g*/) {
     'use strict';
 
     function h() {
@@ -30,7 +30,7 @@ __d("EventHolder", ["invariant"], function(global /*a*/ , require /*b*/ , requir
         this.$EventHolder1 = m;
     };
     h.prototype.releaseCurrentEvent = function() {
-        invariant /*g*/ (this.$EventHolder1 !== null);
+        invariant/*g*/(this.$EventHolder1 !== null);
         this.releaseEvent(this.$EventHolder1);
     };
     h.prototype.releaseEvent = function(i) {
@@ -39,5 +39,5 @@ __d("EventHolder", ["invariant"], function(global /*a*/ , require /*b*/ , requir
     h.prototype.releaseEventType = function(i) {
         this.$EventHolder0[i] = [];
     };
-    module /*e*/ .exports = h;
+    module/*e*/.exports = h;
 });

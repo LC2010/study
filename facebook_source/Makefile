@@ -9,7 +9,7 @@ sources/%/Makefile:compressed/%.js create_makefile.js Makefile
 	$(NODE) create_makefile.js "$<" > "$@"
 	cd "sources/$*" && $(MAKE)
 
-clear:
+clean:
 	rm -rf sources
 
-.PHONY: all clear
+.PHONY: all clean

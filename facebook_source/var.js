@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 var fs = require("fs");
 
 if (process.argv.length < 3) {
@@ -8,16 +7,13 @@ if (process.argv.length < 3) {
 }
 
 var inputFile = process.argv[2],
-    input = fs.readFileSync(inputFile, "utf8"),
-    start = input.indexOf("__d("),
-    code = input.substr(start);
+    code = fs.readFileSync(inputFile, "utf8");
 
 var varExpStr = "[\\w\\-\\$\\.]+",
     argExpStr = "\\s*,\\s*(" + varExpStr + ")",
     funcExpStr = "^function\\s*\\(\\s*(" + varExpStr + ")",
     argExp = new RegExp(argExpStr, "g"),
     funcExp = new RegExp(funcExpStr, "g");
-
 
 function getArg(str) {
     var result = argExp.exec(str);
@@ -45,10 +41,10 @@ function replaceVar(str, from, to) {
 }
 
 var defaultDeps = ['global', 'require', 'requireDynamic', 'requireLazy', 'module', 'exports'];
+var output = [];
 
 function __d(name, deps, factory) {
-    var output = [],
-        arg, factoryOutput, i, count;
+    var arg, factoryOutput, i, count;
 
     factoryOutput = factory = factory.toString();
 
@@ -73,7 +69,7 @@ function __d(name, deps, factory) {
     output.push(",");
     output.push(factoryOutput);
     output.push(");");
-    fs.writeFileSync(name.replace(/[ :]/g, ".") + ".js", output.join(""));
 }
 
 (new Function("__d", code))(__d);
+fs.writeFileSync(inputFile, output.join(""));

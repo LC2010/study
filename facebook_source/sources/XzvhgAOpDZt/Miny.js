@@ -1,4 +1,4 @@
-__d("Miny", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("Miny",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
     var g = 'Miny1',
         h = {
             encode: [],
@@ -48,5 +48,5 @@ __d("Miny", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , r
         encode: k,
         decode: l
     };
-    module /*e*/ .exports = m;
+    module/*e*/.exports = m;
 });

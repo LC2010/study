@@ -1,4 +1,4 @@
-__d("EventEmitterWithHolding", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("EventEmitterWithHolding",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
     'use strict';
 
     function g(h, i) {
@@ -45,5 +45,5 @@ __d("EventEmitterWithHolding", [], function(global /*a*/ , require /*b*/ , requi
     g.prototype.releaseHeldEventType = function(h) {
         this.$EventEmitterWithHolding1.releaseEventType(h);
     };
-    module /*e*/ .exports = g;
+    module/*e*/.exports = g;
 });

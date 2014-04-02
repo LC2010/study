@@ -1,7 +1,7 @@
-__d("ScriptMonitor", [], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ ) {
+__d("ScriptMonitor",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
     var g, h = [],
         i = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-    module /*e*/ .exports = {
+    module/*e*/.exports = {
         activate: function() {
             if (!i) return;
             g = new i(function(j) {

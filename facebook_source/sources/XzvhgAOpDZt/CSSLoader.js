@@ -1,4 +1,4 @@
-__d("CSSLoader", ["isEmpty"], function(global /*a*/ , require /*b*/ , requireDynamic /*c*/ , requireLazy /*d*/ , module /*e*/ , exports /*f*/ , isEmpty /*g*/ ) {
+__d("CSSLoader",["isEmpty"],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/, isEmpty/*g*/) {
     var h = 20,
         i = 5000,
         j, k, l = {}, m = [],
@@ -37,18 +37,18 @@ __d("CSSLoader", ["isEmpty"], function(global /*a*/ , require /*b*/ , requireDyn
                 }
             }
         for (var y = 0; y < v.length; y++) v[y].parentNode.removeChild(v[y]);
-        if (!isEmpty /*g*/ (u)) {
+        if (!isEmpty/*g*/(u)) {
             for (y = 0; y < u.length; y++) u[y]();
             n = Date.now() + i;
         }
-        return isEmpty /*g*/ (o);
+        return isEmpty/*g*/(o);
     }
 
     function r(t, u, v, w) {
         var x = document.createElement('meta');
         x.id = 'bootloader_' + t.replace(/[^global/*a*/-z0-9]/ig, '_');
         u.appendChild(x);
-        var y = !isEmpty /*g*/ (o);
+        var y = !isEmpty/*g*/(o);
         n = Date.now() + i;
         o[t] = {
             signal: x,
@@ -128,5 +128,5 @@ __d("CSSLoader", ["isEmpty"], function(global /*a*/ , require /*b*/ , requireDyn
             delete l[t];
         }
     };
-    module /*e*/ .exports = s;
+    module/*e*/.exports = s;
 });
