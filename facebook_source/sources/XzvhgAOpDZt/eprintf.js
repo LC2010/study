@@ -1,14 +1,21 @@
-__d("eprintf",[],function (global/*a*/, require/*b*/, requireDynamic/*c*/, requireLazy/*d*/, module/*e*/, exports/*f*/) {
-    var g = function(h) {
-        var i = Array.prototype.slice.call(arguments).map(function(l) {
-            return String(l);
+/*字符串格式化函数*/
+__d("eprintf", [], function (global, require, requireDynamic, requireLazy, module, exports) {
+
+    /*
+    * 一种字符串格式化函数，支持%s替换字符，如epritf("hello %s","world") 返回hello world;
+    * @param str {String} 需要格式化的字符串
+    */
+    var eprintf = function (str) {
+        var strArgs = Array.prototype.slice.call(arguments).map(function (arg) {
+            return String(arg);
         }),
-            j = h.split('%s').length - 1;
-        if (j !== i.length - 1) return g('eprintf args number mismatch: %s', JSON.stringify(i));
-        var k = 1;
-        return h.replace(/%s/g, function(l) {
-            return String(i[k++]);
+            sCount = str.split('%s').length - 1;
+        if (sCount !== strArgs.length - 1) 
+            return eprintf('eprintf args number mismatch: %s', JSON.stringify(strArgs));
+        var index = 1;
+        return str.replace(/%s/g, function (s) {
+            return String(strArgs[index++]);
         });
     };
-    module/*e*/.exports = g;
+    module.exports = eprintf;
 });
