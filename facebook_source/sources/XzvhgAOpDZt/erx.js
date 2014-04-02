@@ -3,7 +3,7 @@ __d("erx", ["ex"], function (global, require, requireDynamic, requireLazy, modul
     /*
        格式化字符串，例如aa<![EX[xxxx]]>bb 转换成 [aaxxxxbb]返回
        @param {String} 需要格式的字符串
-       return {Array} 格式化后的字符串
+       return {Array} 格式化后的字符串数组
     */
     
     var erx = function (str) {

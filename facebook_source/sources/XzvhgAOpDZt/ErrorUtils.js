@@ -56,8 +56,11 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*
                 popFrames--;
                 needPop = true;
             }
-            if (msgReg.test(errObj.message) && errObj.framesToPop === 2 && stack)
-                if (scriptReg.test(stack.script)) errObj.message += ' at ' + stack.script + (stack.line ? ':' + stack.line : '') + (stack.column ? ':' + stack.column : '');
+            if (msgReg.test(errObj.message) && errObj.framesToPop === 2 && stack) {
+                if (scriptReg.test(stack.script)) {
+                    errObj.message += ' at ' + stack.script + (stack.line ? ':' + stack.line : '') + (stack.column ? ':' + stack.column : '');
+                }
+            }
             delete errObj.framesToPop;
         }
         var error = {
@@ -96,12 +99,15 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*
             error.column = error.column || stackFrames[0].column;
         }
         error._originalError = errObj;
-        for (var key in error) (error[key] == null && delete error[key]);
+        for (var key in error) {
+            (error[key] == null && delete error[key]);
+        }
         return error;
     }
 
     function reportError(errObj) {
-        if (errReporting) return false;
+        if (errReporting)
+            return false;
         if (guardList.length > 0) {
             errObj.guard = errObj.guard || guardList[0];
             errObj.guardList = guardList.slice();
@@ -133,43 +139,44 @@ __d("ErrorUtils", ["Env", "eprintf", "erx", "wrapFunction"], function (global /*
         isInGuard = (guardList.length !== 0);
     }
 
-    function applyWithGuard(fn, context, args, oa, tag) {
+    function applyWithGuard(fn, context, args, resolover, tag) {
         addGuard(tag || ANONYMOUS_GUARD_TAG);
-        var qa, ra = g.nocatch || (/nocatch/).test(location.search);
-        if (!ra && Env.nocatch)
-            ra = Env.nocatch;
-        if (ra) {
+        var ret,
+            nocatch = Env.nocatch || (/nocatch/).test(location.search);
+        if (!nocatch && Env.nocatch)
+            nocatch = Env.nocatch;
+        if (nocatch) {
             try {
-                qa = fn.apply(context, args || []);
+                ret = fn.apply(context, args || []);
             } finally {
                 removeGuard();
             }
-            return qa;
+            return ret;
         }
         try {
-            qa = fn.apply(context, args || []);
-            return qa;
-        } catch (sa) {
-            var ta = normalizeError(sa);
-            if (oa)
-                oa(ta);
+            ret = fn.apply(context, args || []);
+            return ret;
+        } catch (err) {
+            var errObj = normalizeError(err);
+            if (resolover)
+                resolover(errObj);
             if (fn)
-                ta.callee = fn.toString().substring(0, 100);
-            if (na)
-                ta.args = Array.prototype.slice.call(args).toString().substring(0, 100);
-            ta.guard = guardList[0];
-            ta.guardList = guardList.slice();
-            reportError(ta);
+                errObj.callee = fn.toString().substring(0, 100);
+            if (args)
+                errObj.args = Array.prototype.slice.call(args).toString().substring(0, 100);
+            errObj.guard = guardList[0];
+            errObj.guardList = guardList.slice();
+            reportError(errObj);
         } finally {
             removeGuard();
         }
     }
 
-    function guard(fn, args, context) {
-        args = args || fn.name || GENERATED_GUARD_TAG;
+    function guard(fn, tag, context) {
+        tag = tag || fn.name || GENERATED_GUARD_TAG;
 
         function guardFn() {
-            return applyWithGuard(fn, context || this, arguments, null, args);
+            return applyWithGuard(fn, context || this, arguments, null, tag);
         }
         return guardFn;
     }
